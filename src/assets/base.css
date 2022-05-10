@@ -1,0 +1,79 @@
+/* -----------------------------------*\
+  #CUSTOM PROPERTY
+\*----------------------------------- */
+
+:root {
+  /* COLORS */
+  --color-primary: #00cba9;
+  --color-primary-dark: #00a88c;
+  --color-secondary: #3462ac;
+  --color-secondary-dark: #26477e;
+  --color-secondary-very-dark: #172b4b;
+  --color-dark-gray: #313230;
+  --color-light-yellow: #ffd97d;
+
+  /* FONTS */
+  --ff-open-sans: "Open Sans", helvetica, arial, sans-serif;
+  --ff-poppins: "Poppins", "Open Sans", helvetica, arial, sans-serif;
+}
+
+/* -----------------------------------*\
+  #RESET
+\*----------------------------------- */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  display: block;
+}
+
+body {
+  font-family: var(--ff-open-sans);
+}
+
+hr {
+  margin: 1em 0;
+  border: none;
+  border-bottom: 1px solid rgb(119 119 119);
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 0.7em 1em;
+  font-size: 1.1em;
+  border-radius: 0.6em;
+  border: 1px solid var(--color-dark-gray);
+  font-family: var(--ff-poppins), FontAwesome, sans-serif;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.3em;
+  color: var(--color-dark-gray);
+}
+
+/* -----------------------------------*\
+  #REUSED COMPONENTS
+\*----------------------------------- */
+
+.btn {
+  cursor: pointer;
+  border: none;
+  padding: 1em 2em;
+  font-size: 1.2em;
+  font-family: var(--ff-poppins);
+  border-radius: 1em;
+}
