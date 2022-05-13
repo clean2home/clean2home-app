@@ -97,7 +97,6 @@ import InfoMoney from "../assets/info-money.svg";
 
     <!-- Trabaja con nosotros Iván -->
     <section class="work-with-us">
-      <img src="./assets/work-with-us.svg" alt="Trabaja con nosotros" />
       <h2>¿Quieres trabajar con nosotros?</h2>
       <p>
         En Clean2Home buscamos cleaners motivados que sean capaces de satisfacer
