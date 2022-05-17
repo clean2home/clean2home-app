@@ -1,7 +1,9 @@
-<script setup></script>
+<script setup>
+import CleanersList from "@/components/CleanersList.vue";
+</script>
 
 <template>
-  <main>
-    <h1>Cleaners</h1>
-  </main>
+  <CleanersList />
 </template>
+
+<style></style>
