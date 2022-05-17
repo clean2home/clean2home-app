@@ -5,6 +5,7 @@ import WaveDown from "../assets/WaveDown.vue";
 import HomeInfo from "../components/home/HomeInfo.vue";
 import WorkWith from "../components/WorkWith.vue";
 import HomeStatistics from "../components/home/HomeStatistics.vue";
+import CarouselComponent from "../components/ui/CarouselComponent.vue";
 import ActionCall from "../components/ActionCall.vue";
 </script>
 
@@ -16,6 +17,7 @@ import ActionCall from "../components/ActionCall.vue";
     <WaveDown />
     <WorkWith />
     <HomeStatistics />
+    <CarouselComponent />
     <ActionCall />
   </main>
 </template>
