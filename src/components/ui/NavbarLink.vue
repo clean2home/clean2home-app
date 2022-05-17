@@ -11,7 +11,7 @@ defineProps({
     <RouterLink :to="href">{{ name }}</RouterLink>
   </li>
 </template>
-<style>
+<style lang="scss">
 .navbar-links {
   display: inline;
   font-family: var(--ff-poppins);

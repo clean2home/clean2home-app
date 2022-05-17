@@ -45,7 +45,7 @@ const links = reactive([
     </ul>
   </nav>
 </template>
-<style>
+<style lang="scss">
 .navbar-list {
   display: flex;
   align-items: center;
