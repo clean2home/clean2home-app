@@ -2,6 +2,7 @@
 import NavBar from "./components/ui/NavBar.vue";
 import { RouterView } from "vue-router";
 import FooterComponent from "./components/ui/FooterComponent.vue";
+import { onMounted } from "@vue/runtime-core";
 </script>
 
 <template>
