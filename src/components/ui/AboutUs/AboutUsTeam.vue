@@ -1,6 +1,8 @@
 <script setup>
 import WaveUp from "@/assets/WaveUp.vue";
 import WaveDown from "@/assets/WaveDown.vue";
+import ProfilePic from "@/assets/profile_pic.svg";
+import ProfileGuyGlasses from "@/assets/profile-guy-glasses.svg";
 </script>
 
 <template>
@@ -9,31 +11,31 @@ import WaveDown from "@/assets/WaveDown.vue";
   <section class="team">
     <div class="team-members">
       <div class="member">
-        <img src="./assets/profile-guy-glasses.svg" alt="Abel" />
+        <img :src="ProfileGuyGlasses" alt="Abel" />
         <h3>Abel</h3>
       </div>
       <div class="member">
-        <img src="./assets/profile-guy-glasses.svg" alt="Alex" />
+        <img :src="ProfileGuyGlasses" alt="Alex" />
         <h3>Alex</h3>
       </div>
       <div class="member">
-        <img src="./assets/profile_pic.svg" alt="Daniela" />
+        <img :src="ProfilePic" alt="Daniela" />
         <h3>Daniela</h3>
       </div>
       <div class="member">
-        <img src="./assets/profile-guy-glasses.svg" alt="Álvaro" />
+        <img :src="ProfileGuyGlasses" alt="Álvaro" />
         <h3>Álvaro</h3>
       </div>
       <div class="member">
-        <img src="./assets/profile-guy-glasses.svg" alt="Enrique" />
+        <img :src="ProfileGuyGlasses" alt="Enrique" />
         <h3>Enrique</h3>
       </div>
       <div class="member">
-        <img src="./assets/profile_pic.svg" alt="Lale" />
+        <img :src="ProfilePic" alt="Lale" />
         <h3>Lale</h3>
       </div>
       <div class="member">
-        <img src="./assets/profile-guy-glasses.svg" alt="Iván" />
+        <img :src="ProfileGuyGlasses" alt="Iván" />
         <h3>Iván</h3>
       </div>
     </div>
