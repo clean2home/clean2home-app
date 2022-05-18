@@ -1,7 +1,9 @@
 <script setup>
 import { reactive } from "vue";
+import { useUiStore } from "@/stores/ui";
 import NavbarLink from "./NavbarLink.vue";
 import Logo from "../../assets/logo.svg";
+import AuthModal from "./modal/AuthModal.vue";
 
 const links = reactive([
   { name: "Inicio", href: "/" },
@@ -10,6 +12,8 @@ const links = reactive([
   { name: "Como funciona", href: "/como-funciona" },
   { name: "Hazte cleaner", href: "/hazte-cleaner" },
 ]);
+
+const { modal, toggleModal } = useUiStore();
 </script>
 <template>
   <nav class="navbar">
@@ -27,7 +31,7 @@ const links = reactive([
         :href="link.href"
       />
       <li class="navbar-links">
-        <a href="#" id="login-register">Iniciar sesión</a>
+        <a href="#" @click="toggleModal" id="login-register">Iniciar sesión</a>
       </li>
       <li class="navbar-links">
         <div class="navbar-user">
@@ -44,6 +48,7 @@ const links = reactive([
       </li>
     </ul>
   </nav>
+  <AuthModal v-if="modal.isOpen" />
 </template>
 <style lang="scss">
 .navbar-list {

@@ -2,14 +2,11 @@
 import NavBar from "./components/ui/NavBar.vue";
 import { RouterView } from "vue-router";
 import FooterComponent from "./components/ui/FooterComponent.vue";
-import { onMounted } from "@vue/runtime-core";
 </script>
 
 <template>
   <header>
-    <div class="wrapper">
-      <NavBar />
-    </div>
+    <NavBar />
   </header>
 
   <RouterView />

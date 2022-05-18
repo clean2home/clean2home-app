@@ -1,7 +1,7 @@
 <script setup>
-import { RouterLink } from "vue-router";
+/* import { RouterLink } from "vue-router";
 import { getDocs, collection, query, where } from "firebase/firestore";
-import { db } from "/firebase/config";
+import { db } from "/firebase/config"; */
 </script>
 <template>
   <main>
@@ -31,7 +31,7 @@ import { db } from "/firebase/config";
   </main>
 </template>
 
-<style>
+<style lang="scss" scoped>
 /* -----------------------------------*\
   #HEADER
 \*----------------------------------- */
