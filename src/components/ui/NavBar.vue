@@ -1,7 +1,8 @@
 <script setup>
 import { reactive } from "vue";
 import NavbarLink from "./NavbarLink.vue";
-import Logo from "../../assets/logo.svg";
+import Logo from "@/assets/logo.svg";
+// El @ simboliza el src
 
 const links = reactive([
   { name: "Inicio", href: "/" },
