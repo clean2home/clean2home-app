@@ -1,5 +1,5 @@
 <script setup>
-import WorkWithUs from "../assets/work-with-us.svg";
+import WorkWithUs from "@/assets/work-with-us.svg";
 </script>
 <template>
   <section class="work-with-us">
