@@ -1,117 +1,73 @@
-<script setup>
-import { RouterLink } from "vue-router";
+<script default>
 import { getDocs, collection, query, where } from "firebase/firestore";
 import { db } from "/firebase/config";
-</script>
-<template>
-  <main>
-    <div class="detail-cleaners">
-      <div class="header-cleaners">
-        <div class="container-h1">
-          <h1 class="cleaners-slogan">
-            Encuentra a la persona ideal para <strong>mimar tu hogar</strong>
-          </h1>
-        </div>
-        <form class="cleaners-form">
-          <input
-            type="text"
-            name="cityFilter"
-            id="cityFilter"
-            placeholder="Introduce C.P o ciudad"
-          />
-          <a
-            href="javascript:;"
-            onclick="this.href='cleaners.html?cityFilter=' + document.getElementById('cityFilter').value"
-            class="btn search"
-            >Buscar</a
-          >
-        </form>
-      </div>
+
+const divContainerCards = document.querySelector(".container-cards");
+
+const getCleaners = async () => {
+  const cleaners = [];
+  const collRef = collection(db, "cleaners");
+  const querySnapshot = await getDocs(collRef);
+  querySnapshot.forEach((doc) => {
+    cleaners.push({
+      id: doc.id,
+      ...doc.data(),
+    });
+  });
+
+  return cleaners;
+};
+
+const printCleaners = async () => {
+  const cleaners = await getCleaners();
+
+  const shortComment = (element) => {
+    // Se le pasa un elemento directamente
+    if (element.textContent.length > 190)
+      element.textContent = `${element.textContent.substring(0, 190)}...`;
+  };
+
+  cleaners.forEach((cleaner) => {
+    const cleanerCard = `<div class="cleaner-container">
+    <div class="cleaner-image"> <!-- imagen -->
+      <img src="${cleaner.image}"  class="services-profile">
     </div>
-  </main>
+    <div class="cleaner-info"><!-- info -->
+      <div class="container-name-rating">
+      <div class="container-name-city>
+        <h3 class="name-cleaner"><strong>${cleaner.name}</strong> ${cleaner.verified}
+        <h4 class="city-cleaner"><small>📍${cleaner.city}</small></h4></div>
+        </h3>
+      <div class="rating-star">
+        <p class="rating"><strong><i class="fa-solid fa-star"></i>  ${cleaner.rating}</strong></p>
+      </div>
+      </div >
+      <p class="cleaner-info-p">${cleaner.description}</p>
+      <p class="works">${cleaner.works} trabajos</p>
+    </div >
+    <div class="cleaner-btn"><!-- precio/boton -->
+      <p class="price"><strong> ${cleaner.price}</strong><small>€/hora</small></p>
+      <a href="/cleaners-profile.html?id=${cleaner.id}" class="btn hire">Contratar</a>
+    </div>
+    </div >
+    `;
+    const divContainerCards = document.querySelector(".container-cards");
+
+    divContainerCards.innerHTML += cleanerCard;
+  });
+
+  const descriptionParagraph = document.querySelectorAll(".cleaner-info-p");
+  descriptionParagraph.forEach((e) => shortComment(e));
+};
+
+printCleaners();
+</script>
+
+<template>
+  <div class="container-cards"></div>
 </template>
 
 <style>
-/* -----------------------------------*\
-  #HEADER
-\*----------------------------------- */
-.header-cleaners {
-  margin: 0 auto;
-  width: 70%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1em;
-  padding: 10px;
-}
-
-.container-h1 {
-  display: flex;
-  justify-content: center;
-}
-
-.cleaners-slogan {
-  color: #313230;
-  font-family: var(--ff-poppins);
-  width: 70%;
-  font-size: 4em;
-  line-height: 1.4;
-  margin-top: 1em;
-  padding: 20px;
-  min-width: 750px;
-}
-
-.cleaners-slogan strong {
-  color: var(--color-primary);
-}
-
-.cleaners-form {
-  width: 70%;
-  display: flex;
-  align-items: center;
-  min-width: 750px;
-}
-
-.cleaners-form input {
-  font-family: var(--ff-poppins);
-  background: #ececec;
-  border-radius: 0.8em;
-  border: none;
-  width: 100%;
-  padding: 1em;
-  font-size: 1.2em;
-  margin: 1em;
-}
-
-.cleaners-form input:focus {
-  border: none;
-  outline: none;
-  box-shadow: 0 0 0 2px var(--color-primary);
-}
-
-.search {
-  font-size: 1em;
-  background: var(--color-secondary);
-  box-shadow: 0 6px 0 var(--color-secondary-very-dark);
-  color: white;
-  display: inline-block;
-  margin-bottom: 6px;
-}
-
-.search:hover {
-  background-color: var(--color-secondary-dark);
-}
-
-.search:active {
-  box-shadow: 0 3px 0 var(--color-secondary-very-dark);
-  position: relative;
-  top: 5px;
-}
-
-/* -----------------------------------*\
-  #CLEANERS CARDS
-\*----------------------------------- */
-
 .fa-circle-check {
   color: #00cba9;
 }
@@ -258,57 +214,6 @@ import { db } from "/firebase/config";
   font-weight: 900;
 }
 
-/* -----------------------------------*\
-  #FOOTER
-\*----------------------------------- */
-
-.footer {
-  background-color: #545454;
-  color: white;
-  width: 100%;
-  padding: 4em 2em;
-}
-
-.footer-nav {
-  color: #fff;
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
-  list-style-position: inside;
-}
-
-.column {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-
-  & .items {
-    list-style: none;
-    padding: 0;
-
-    & li {
-      margin-top: 0.5em;
-    }
-
-    & li a {
-      color: white;
-      text-decoration: none;
-    }
-  }
-}
-
-.footer-elements {
-  margin: 0.5em;
-}
-
-.legal {
-  text-align: center;
-  margin-top: 1em;
-}
-
-/* -----------------------------------*\
-  #MEDIA QUERIES CENTRADO
-\*----------------------------------- */
 @media (max-width: 1024px) {
   .active {
     display: block;

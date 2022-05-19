@@ -1,9 +1,11 @@
 <script setup>
-import CleanersList from "@/components/CleanersList.vue";
+import CleanersBox from "@/components/cleaners-list/CleanersListing.vue";
+import CleanersSearch from "@/components/cleaners-list/CleanersSearch.vue";
 </script>
 
 <template>
-  <CleanersList />
+  <CleanersSearch />
+  <CleanersBox />
 </template>
 
 <style></style>
