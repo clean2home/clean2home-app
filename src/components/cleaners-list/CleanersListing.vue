@@ -1,23 +1,30 @@
-<script default>
-import { getDocs, collection, query, where } from "firebase/firestore";
+<script setup>
+import { getDocs, collection } from "firebase/firestore";
 import { db } from "/firebase/config";
+import { reactive, onMounted } from "vue";
 
-const divContainerCards = document.querySelector(".container-cards");
+const state = reactive({
+  cleaners: [],
+});
 
+/* const divContainerCards = document.querySelector(".container-cards");
+ */
 const getCleaners = async () => {
   const cleaners = [];
   const collRef = collection(db, "cleaners");
   const querySnapshot = await getDocs(collRef);
   querySnapshot.forEach((doc) => {
+    console.log(doc);
+
     cleaners.push({
       id: doc.id,
       ...doc.data(),
     });
   });
-
-  return cleaners;
+  console.log(cleaners);
+  state.cleaners = cleaners;
 };
-
+/*
 const printCleaners = async () => {
   const cleaners = await getCleaners();
 
@@ -25,8 +32,8 @@ const printCleaners = async () => {
     // Se le pasa un elemento directamente
     if (element.textContent.length > 190)
       element.textContent = `${element.textContent.substring(0, 190)}...`;
-  };
-
+  }; */
+/*
   cleaners.forEach((cleaner) => {
     const cleanerCard = `<div class="cleaner-container">
     <div class="cleaner-image"> <!-- imagen -->
@@ -55,16 +62,58 @@ const printCleaners = async () => {
 
     divContainerCards.innerHTML += cleanerCard;
   });
-
-  const descriptionParagraph = document.querySelectorAll(".cleaner-info-p");
+ */
+/*   const descriptionParagraph = document.querySelectorAll(".cleaner-info-p");
   descriptionParagraph.forEach((e) => shortComment(e));
-};
+}; */
 
-printCleaners();
+/* printCleaners();
+ */
+onMounted(() => {
+  getCleaners();
+});
 </script>
 
 <template>
-  <div class="container-cards"></div>
+  <div class="container-cards">
+    <div v-for="cleaner in state.cleaners">
+      <div class="cleaner-container">
+        <div class="cleaner-image">
+          <img :src="cleaner.image" class="services-profile" />
+        </div>
+        <div class="cleaner-info">
+          <div class="container-name-rating">
+            <div class="container-name-city">
+              <h3 class="name-cleaner">
+                <strong>{{ cleaner.name }}</strong>
+              </h3>
+              <h4 class="city-cleaner">
+                <small>📍{{ cleaner.city }}</small>
+              </h4>
+            </div>
+
+            <div class="rating-star">
+              <p class="rating">
+                <strong
+                  ><!-- <font-awesome-icon icon="fa-solid fa-star" /> -->
+                  {{ cleaner.rating }}</strong
+                >
+              </p>
+            </div>
+          </div>
+          <p class="cleaner-info-p">{{ cleaner.description }}</p>
+          <p class="works">{{ cleaner.works }} trabajos</p>
+        </div>
+        <div class="cleaner-btn">
+          <p class="price">
+            <strong> {{ cleaner.price }}</strong
+            ><small>€/hora</small>
+          </p>
+          <a href="/cleaners-profile.html?id=" class="btn hire">Contratar</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style>
@@ -89,8 +138,7 @@ printCleaners();
   margin: 20px;
   display: flex;
   width: 100%;
-  max-width: 950px;
-  min-width: 760px;
+  width: 950px;
   box-shadow: 3px 5px 9px 2px #0000003e;
   border-radius: 5px;
 }
@@ -225,7 +273,7 @@ printCleaners();
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 980px) {
   .header-cleaners {
     width: 100%;
     display: flex;
@@ -256,9 +304,7 @@ printCleaners();
   }
 
   .cleaner-container {
-    width: 95%;
-    max-width: 550px;
-    min-width: 330px;
+    width: 30vh;
     display: flex;
     flex-direction: column;
     align-items: center;
