@@ -12,9 +12,9 @@ const id = route.params.id;
 const state = reactive({
   name: "",
   description: "",
-  works: "",
+  works: 0,
   price: "",
-  rating: "",
+  rating: 0,
   cp: "",
   img: "",
   city: "",
