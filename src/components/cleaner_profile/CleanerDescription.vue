@@ -4,7 +4,6 @@ const props = defineProps({
   works: Number,
   rating: Number,
 });
-console.log(props);
 </script>
 <template>
   <div class="container-cards">
@@ -18,7 +17,7 @@ console.log(props);
         <div class="works-rating">
           <p class="works">{{ props.works }} trabajos</p>
           <p class="rating">
-            <font-awesome-icon icon="star" />{{ props.rating }}
+            <font-awesome-icon class="star" icon="star" />{{ props.rating }}
           </p>
         </div>
       </div>

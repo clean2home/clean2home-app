@@ -1,8 +1,12 @@
 <script setup>
 import { reactive } from "vue";
+import { useUiStore } from "@/stores/ui";
+import NavbarUser from "./NavbarUser.vue";
 import NavbarLink from "./NavbarLink.vue";
 import Logo from "@/assets/logo.svg";
-// El @ simboliza el src
+import AuthModal from "./modal/AuthModal.vue";
+import { useAuthStore } from "../../stores/auth";
+import { storeToRefs } from "pinia";
 
 const links = reactive([
   { name: "Inicio", href: "/" },
@@ -11,6 +15,9 @@ const links = reactive([
   { name: "Como funciona", href: "/como-funciona" },
   { name: "Hazte cleaner", href: "/hazte-cleaner" },
 ]);
+
+const { modal, toggleModal } = useUiStore();
+const { user } = storeToRefs(useAuthStore());
 </script>
 <template>
   <nav class="navbar">
@@ -27,24 +34,13 @@ const links = reactive([
         :name="link.name"
         :href="link.href"
       />
-      <li class="navbar-links">
-        <a href="#" id="login-register">Iniciar sesión</a>
-      </li>
-      <li class="navbar-links">
-        <div class="navbar-user">
-          <span id="navbar-name"></span>
-          <div class="navbar-img-container">
-            <img
-              referrerpolicy="no-referrer"
-              id="navbar-img"
-              src="https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg"
-              alt="user-image"
-            />
-          </div>
-        </div>
+      <NavbarUser v-if="user" />
+      <li v-else-if="!user" class="navbar-links">
+        <a href="#" @click="toggleModal" id="login-register">Iniciar sesión</a>
       </li>
     </ul>
   </nav>
+  <AuthModal v-if="modal.isOpen" />
 </template>
 <style lang="scss">
 .navbar-list {
@@ -60,23 +56,6 @@ const links = reactive([
   user-select: none;
   width: 200px;
   margin-right: auto;
-}
-
-.navbar-user {
-  display: none;
-  font-size: 1.4em;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-
-  & img {
-    cursor: pointer;
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-left: 1em;
-  }
 }
 
 .navbar-toggle {

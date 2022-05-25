@@ -6,7 +6,6 @@ const props = defineProps({
   cp: String,
   price: String,
 });
-console.log(props.name);
 </script>
 
 <template>
