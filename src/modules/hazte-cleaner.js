@@ -73,7 +73,7 @@ const createCleaner = (cleaner) => {
       icon: "success",
       text: "Ya eres cleaner",
     }).then(() => {
-      router.replace(`/cleaner-profile/${userId}`);
+      router.push({ path: `/cleaner/${userId}`, replace: true });
     });
   });
 };

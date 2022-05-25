@@ -26,10 +26,7 @@ const state = reactive({
 const getData = async () => {
   const collRef = collection(db, "cleaners");
   const querySnapshot = await getDocs(collRef);
-  console.log(querySnapshot);
   querySnapshot.forEach((doc) => {
-    console.log(doc.data());
-    console.log(doc.id);
     if (doc.id === id) {
       state.img = doc.data().image;
       state.name = doc.data().name;
@@ -41,7 +38,6 @@ const getData = async () => {
       state.rating = doc.data().rating;
     }
   });
-  console.log(state.img);
 };
 onMounted(() => {
   getData();

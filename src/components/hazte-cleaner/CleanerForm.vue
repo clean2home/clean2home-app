@@ -27,6 +27,7 @@ const state = reactive({
 
 const onImageChange = (e) => {
   const file = e.target.files[0];
+  state.image = file;
   state.imagePreview = URL.createObjectURL(file);
 };
 
