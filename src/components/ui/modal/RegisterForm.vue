@@ -1,4 +1,5 @@
 <script setup>
+import { registerWithEmail } from "@/modules/auth";
 import { reactive, computed } from "vue";
 import useValidate from "@vuelidate/core";
 import {
@@ -7,6 +8,7 @@ import {
   minLength,
   sameAs,
   helpers,
+  alpha,
 } from "@vuelidate/validators";
 import { useUiStore } from "@/stores/ui";
 const { activeLogin } = useUiStore();
@@ -21,26 +23,38 @@ const state = reactive({
 });
 const rules = computed(() => {
   return {
-    name: { required },
-    email: { required, email },
+    name: {
+      required: helpers.withMessage("Campo obligatorio", required),
+      alpha: helpers.withMessage("El nombre solo puede contener letras", alpha),
+    },
+    email: {
+      required: helpers.withMessage("Campo obligatorio", required),
+      email: helpers.withMessage("El email debe de ser válido", email),
+    },
     password: {
-      required,
-      minLength: minLength(8),
+      required: helpers.withMessage("Campo obligatorio", required),
+      minLength: helpers.withMessage(
+        "Debe de tener mínimo 8 caracteres",
+        minLength(8)
+      ),
       passwordSecurity: helpers.withMessage(
         "Debe contener mínimo una letra mayúscula, una minúscula y un número",
         passwordSecurity
       ),
     },
-    passwordRepeat: { required, sameAs: sameAs(state.password) },
+    passwordRepeat: {
+      required: helpers.withMessage("Campo obligatorio", required),
+      sameAs: sameAs(state.password),
+    },
   };
 });
 const v$ = useValidate(rules, state);
 
 const handleSubmit = (e) => {
-  e.preventDefault();
   v$.value.$validate();
+  e.preventDefault();
   if (!v$.value.$error) {
-    console.log("bien");
+    registerWithEmail(state.name, state.email, state.password);
   }
 };
 </script>
@@ -53,6 +67,7 @@ const handleSubmit = (e) => {
         <input
           type="text"
           class="form-control"
+          :class="{ error: v$.name.$error }"
           name="name"
           id="name"
           placeholder="&#xf007; tu nombre"
@@ -67,6 +82,7 @@ const handleSubmit = (e) => {
         <input
           type="email"
           class="form-control"
+          :class="{ error: v$.email.$error }"
           name="email"
           id="email"
           placeholder="&#xf0e0; tu@email.com"
@@ -81,6 +97,7 @@ const handleSubmit = (e) => {
         <input
           type="password"
           class="form-control"
+          :class="{ error: v$.password.$error }"
           name="password"
           id="password"
           placeholder="&#xf023;  &bull;&bull;&bull;&bull;&bull;&bull;"
@@ -95,6 +112,7 @@ const handleSubmit = (e) => {
         <input
           type="password"
           class="form-control"
+          :class="{ error: v$.passwordRepeat.$error }"
           name="passwordRepeat"
           id="passwordRepeat"
           placeholder="&#xf023;  &bull;&bull;&bull;&bull;&bull;&bull;"
@@ -114,7 +132,11 @@ const handleSubmit = (e) => {
   </div>
 </template>
 <style lang="scss" scoped>
+.error {
+  border: 2px solid red;
+}
 .error-msg {
   color: red;
+  font-size: 0.8em;
 }
 </style>

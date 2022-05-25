@@ -16,7 +16,8 @@
     "@vuelidate/core": "^2.0.0-alpha.41",
     "@vuelidate/validators": "^2.0.0-alpha.29",
     "firebase": "^9.8.1",
-    "pinia": "^2.0.13",
+    "pinia": "^2.0.14",
+    "sweetalert2": "^11.4.14",
     "vue": "^3.2.33",
     "vue-router": "^4.0.14"
   },

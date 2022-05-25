@@ -49,7 +49,8 @@ hr {
   border-bottom: 1px solid rgb(119 119 119);
 }
 
-input {
+input,
+textarea {
   display: block;
   width: 100%;
   padding: 0.7em 1em;
@@ -57,6 +58,7 @@ input {
   border-radius: 0.6em;
   border: 1px solid var(--color-dark-gray);
   font-family: var(--ff-poppins), FontAwesome, sans-serif;
+  resize: none;
 }
 
 label {
