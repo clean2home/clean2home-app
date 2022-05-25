@@ -14,6 +14,8 @@ import {
   faArrowLeft,
   faAngleRight,
   faAngleLeft,
+  faMapPin,
+  faQuoteLeft,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -29,7 +31,9 @@ library.add(
   faArrowRight,
   faArrowLeft,
   faAngleRight,
-  faAngleLeft
+  faAngleLeft,
+  faMapPin,
+  faQuoteLeft
 );
 
 export default FontAwesomeIcon;

@@ -4,6 +4,8 @@ import CleanersView from "../views/CleanersView.vue";
 import AboutView from "../views/AboutView.vue";
 import HowWorksView from "../views/HowWorksView.vue";
 import BeCleanerView from "../views/BeCleanerView.vue";
+import CleanerProfile from "../views/CleanerProfile.vue";
+import NotFound from "../views/404View.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +34,16 @@ const router = createRouter({
       path: "/hazte-cleaner",
       name: "be-cleaner",
       component: BeCleanerView,
+    },
+    {
+      path: "/cleaner/:id",
+      name: "cleaner-profile",
+      component: CleanerProfile,
+    },
+    {
+      path: "/404",
+      name: "NotFound",
+      component: NotFound,
     },
   ],
 });

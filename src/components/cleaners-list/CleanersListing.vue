@@ -1,37 +1,76 @@
 <script setup>
-/* import { RouterLink } from "vue-router";
-import { getDocs, collection, query, where } from "firebase/firestore";
-import { db } from "/firebase/config"; */
+import { getDocs, collection } from "firebase/firestore";
+import { db } from "/firebase/config";
+import { reactive, onMounted } from "vue";
+import { RouterLink } from "vue-router";
+
+const state = reactive({
+  cleaners: [],
+});
+
+const getCleaners = async () => {
+  const cleaners = [];
+  const collRef = collection(db, "cleaners");
+  const querySnapshot = await getDocs(collRef);
+  querySnapshot.forEach((doc) => {
+    cleaners.push({
+      id: doc.id,
+      ...doc.data(),
+    });
+  });
+  state.cleaners = cleaners;
+};
+
+onMounted(() => {
+  getCleaners();
+});
 </script>
+
 <template>
-  <main>
-    <div class="detail-cleaners">
-      <div class="header-cleaners">
-        <div class="container-h1">
-          <h1 class="cleaners-slogan">
-            Encuentra a la persona ideal para <strong>mimar tu hogar</strong>
-          </h1>
+  <div class="container-cards">
+    <div v-for="cleaner in state.cleaners" :key="cleaner.id">
+      <div class="cleaner-container">
+        <div class="cleaner-image">
+          <img :src="cleaner.image" class="services-profile" />
         </div>
-        <form class="cleaners-form">
-          <input
-            type="text"
-            name="cityFilter"
-            id="cityFilter"
-            placeholder="Introduce C.P o ciudad"
-          />
-          <a
-            href="javascript:;"
-            onclick="this.href='cleaners.html?cityFilter=' + document.getElementById('cityFilter').value"
-            class="btn search"
-            >Buscar</a
-          >
-        </form>
+        <div class="cleaner-info">
+          <div class="container-name-rating">
+            <div class="container-name-city">
+              <h3 class="name-cleaner">
+                <strong>{{ cleaner.name }}</strong>
+              </h3>
+              <h4 class="city-cleaner">
+                <small>📍{{ cleaner.city }}</small>
+              </h4>
+            </div>
+
+            <div class="rating-star">
+              <p class="rating">
+                <strong
+                  ><font-awesome-icon class="star" icon="star" />
+                  {{ cleaner.rating }}</strong
+                >
+              </p>
+            </div>
+          </div>
+          <p class="cleaner-info-p">{{ cleaner.description }}</p>
+          <p class="works">{{ cleaner.works }} trabajos</p>
+        </div>
+        <div class="cleaner-btn">
+          <p class="price">
+            <strong> {{ cleaner.price }}</strong
+            ><small>€/hora</small>
+          </p>
+          <RouterLink :to="`/cleaner/${cleaner.id}`">
+            <span class="btn hire"> Contratar </span>
+          </RouterLink>
+        </div>
       </div>
     </div>
-  </main>
+  </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 /* -----------------------------------*\
   #HEADER
 \*----------------------------------- */
@@ -133,8 +172,7 @@ import { db } from "/firebase/config"; */
   margin: 20px;
   display: flex;
   width: 100%;
-  max-width: 950px;
-  min-width: 760px;
+  width: 950px;
   box-shadow: 3px 5px 9px 2px #0000003e;
   border-radius: 5px;
 }
@@ -193,7 +231,7 @@ import { db } from "/firebase/config"; */
   justify-items: center;
 }
 
-.fa-star {
+.star {
   color: #f9c339;
 }
 
@@ -258,57 +296,6 @@ import { db } from "/firebase/config"; */
   font-weight: 900;
 }
 
-/* -----------------------------------*\
-  #FOOTER
-\*----------------------------------- */
-
-.footer {
-  background-color: #545454;
-  color: white;
-  width: 100%;
-  padding: 4em 2em;
-}
-
-.footer-nav {
-  color: #fff;
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
-  list-style-position: inside;
-}
-
-.column {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-
-  & .items {
-    list-style: none;
-    padding: 0;
-
-    & li {
-      margin-top: 0.5em;
-    }
-
-    & li a {
-      color: white;
-      text-decoration: none;
-    }
-  }
-}
-
-.footer-elements {
-  margin: 0.5em;
-}
-
-.legal {
-  text-align: center;
-  margin-top: 1em;
-}
-
-/* -----------------------------------*\
-  #MEDIA QUERIES CENTRADO
-\*----------------------------------- */
 @media (max-width: 1024px) {
   .active {
     display: block;
@@ -320,7 +307,7 @@ import { db } from "/firebase/config"; */
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 980px) {
   .header-cleaners {
     width: 100%;
     display: flex;
@@ -351,9 +338,7 @@ import { db } from "/firebase/config"; */
   }
 
   .cleaner-container {
-    width: 95%;
-    max-width: 550px;
-    min-width: 330px;
+    width: 30vh;
     display: flex;
     flex-direction: column;
     align-items: center;
