@@ -21,6 +21,7 @@
         <div class="steps-left">
           <button class="icon">
             <font-awesome-icon icon="fa-solid fa-right-to-bracket"></font-awesome-icon>
+            <img src="../assets/how-works-icons/arrow-right-to-bracket-solid.svg" class="icon-svg" />
           </button>
           <h4 class="text-green">Regístrate</h4>
           <p class="explain-left">
@@ -31,6 +32,7 @@
         <div class="step-right">
           <button class="icon">
             <font-awesome-icon icon="fa-solid fa-magnifying-glass"></font-awesome-icon>
+            <img src="../assets/how-works-icons/magnifying-glass-solid.svg" class="icon-svg" />
           </button>
           <h4 class="text-green">Busca en tu ciudad</h4>
           <p class="explain-right">
@@ -40,6 +42,7 @@
         <div class="steps-left">
           <button class="icon">
             <font-awesome-icon icon="fa-solid fa-check" />
+            <img src="../assets/how-works-icons/check-solid.svg" class="icon-svg" />
           </button>
           <h4 class="text-green">Selecciona a tu cleaner</h4>
           <p class="explain-left">
@@ -49,6 +52,7 @@
         <div class="step-right">
           <button class="icon">
             <font-awesome-icon icon="fa-solid fa-calendar-check"></font-awesome-icon>
+            <img src="../assets/how-works-icons/calendar-check-solid.svg" class="icon-svg" />
           </button>
           <h4 class="text-green">Contrata el servicio</h4>
           <p class="explain-right">
@@ -58,6 +62,7 @@
         <div class="steps-left">
           <button class="icon">
             <font-awesome-icon icon="fa-solid fa-flag-checkered"></font-awesome-icon>
+            <img src="../assets/how-works-icons/flag-checkered-solid.svg" class="icon-svg"/>
           </button>
           <h4 class="text-green">Disfruta y paga el servicio</h4>
           <p class="explain-left">
@@ -100,7 +105,7 @@
             Cualquier incidente que sufra cualquiera de las partes estará cubierto con nuestro seguro.<br>
             Porque queremos que solo te preoucpes de disfrutar de tu hogar impecable.
           </p>
-          <img src="./assets/caser-seguros.png" alt="caser seguros">
+          <img src="../assets/caser-seguros.png" alt="caser seguros">
         </div>
       </div>
 
@@ -252,5 +257,13 @@
   .steps-left { padding-left: 25%; }
   .step-right { padding-right: 25%; }
   .steps-client { padding-bottom: 0; }
+}
+
+/* Estilo iconos SVG */
+
+.icon-svg {
+  width:54%; 
+  height: auto; 
+  margin-left: 22%;
 }
 </style>
