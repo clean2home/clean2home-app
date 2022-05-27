@@ -1,4 +1,10 @@
 <script setup>
+import ArrowIcon from "../assets/how-works-icons/arrow-right-to-bracket-solid.svg";
+import CalendarIcon from "../assets/how-works-icons/calendar-check-solid.svg"
+import CheckIcon from "../assets/how-works-icons/check-solid.svg";
+import FlagIcon from "../assets/how-works-icons/flag-checkered-solid.svg";
+import MagnifyingGlassIcon from "../assets/how-works-icons/magnifying-glass-solid.svg";
+import CaserSegurosImage from "../assets/caser-seguros.png";
 
 </script>
 <!-- //  <script src="https://kit.fontawesome.com/790908a15c.js" crossorigin="anonymous"></script> -->
@@ -17,7 +23,7 @@
         <div class="steps-left">
           <button class="icon">
             <font-awesome-icon icon="fa-solid fa-right-to-bracket"></font-awesome-icon>
-            <img src="../assets/how-works-icons/arrow-right-to-bracket-solid.svg" class="icon-svg" />
+            <img :src="ArrowIcon" class="icon-svg" />
           </button>
           <h4 class="text-green">Regístrate</h4>
           <p class="explain-left">
@@ -28,7 +34,7 @@
         <div class="step-right">
           <button class="icon">
             <font-awesome-icon icon="fa-solid fa-magnifying-glass"></font-awesome-icon>
-            <img src="../assets/how-works-icons/magnifying-glass-solid.svg" class="icon-svg" />
+            <img :src="MagnifyingGlassIcon" class="icon-svg" />
           </button>
           <h4 class="text-green">Busca en tu ciudad</h4>
           <p class="explain-right">
@@ -38,7 +44,7 @@
         <div class="steps-left">
           <button class="icon">
             <font-awesome-icon icon="fa-solid fa-check" />
-            <img src="../assets/how-works-icons/check-solid.svg" class="icon-svg" />
+            <img :src="CheckIcon" class="icon-svg" />
           </button>
           <h4 class="text-green">Selecciona a tu cleaner</h4>
           <p class="explain-left">
@@ -48,7 +54,7 @@
         <div class="step-right">
           <button class="icon">
             <font-awesome-icon icon="fa-solid fa-calendar-check"></font-awesome-icon>
-            <img src="../assets/how-works-icons/calendar-check-solid.svg" class="icon-svg" />
+            <img :src="CalendarIcon" class="icon-svg" />
           </button>
           <h4 class="text-green">Contrata el servicio</h4>
           <p class="explain-right">
@@ -58,7 +64,7 @@
         <div class="steps-left">
           <button class="icon">
             <font-awesome-icon icon="fa-solid fa-flag-checkered"></font-awesome-icon>
-            <img src="../assets/how-works-icons/flag-checkered-solid.svg" class="icon-svg"/>
+            <img :src="FlagIcon" class="icon-svg"/>
           </button>
           <h4 class="text-green">Disfruta y paga el servicio</h4>
           <p class="explain-left">
@@ -101,7 +107,7 @@
             Cualquier incidente que sufra cualquiera de las partes estará cubierto con nuestro seguro.<br>
             Porque queremos que solo te preoucpes de disfrutar de tu hogar impecable.
           </p>
-          <img src="../assets/caser-seguros.png" alt="caser seguros">
+          <img :src="CaserSegurosImage" alt="caser seguros">
         </div>
       </div>
 
