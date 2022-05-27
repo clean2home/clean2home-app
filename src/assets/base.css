@@ -79,3 +79,11 @@ label {
   font-family: var(--ff-poppins);
   border-radius: 1em;
 }
+
+.error {
+  border: 2px solid red;
+}
+.error-msg {
+  color: red;
+  font-size: 0.8em;
+}
