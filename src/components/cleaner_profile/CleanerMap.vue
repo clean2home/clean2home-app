@@ -8,6 +8,13 @@ const props = defineProps({
 const state = reactive({
   mapsApi: import.meta.env.VITE_MAPS_KEY,
 });
+const miMetodo = () => {
+  if (!props.city) {
+    return "Madagascar";
+  } else {
+    return props.city;
+  }
+};
 </script>
 
 <template>
@@ -17,10 +24,10 @@ const state = reactive({
       width="600"
       height="550"
       style="border: 0"
-      loading="lazy"
       allowfullscreen
-      referrerpolicy="no-referrer-when-downgrade"
-      :src="`https://www.google.com/maps/embed/v1/place?key=${state.mapsApi}-u5KCR5Ew&q=${props.city}`"
+      :src="`https://www.google.com/maps/embed/v1/place?key=${
+        state.mapsApi
+      }-u5KCR5Ew&q=${miMetodo()}`"
     ></iframe>
   </div>
 </template>
