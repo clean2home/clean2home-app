@@ -19,6 +19,7 @@
     "pinia": "^2.0.14",
     "sweetalert2": "^11.4.14",
     "vue": "^3.2.33",
+    "vue-gtag": "^2.0.1",
     "vue-router": "^4.0.14"
   },
   "devDependencies": {
