@@ -1,4 +1,8 @@
 <script setup>
+import { useAuthStore } from "../../stores/auth";
+import { useUiStore } from "../../stores/ui";
+import { storeToRefs } from "pinia";
+
 const props = defineProps({
   img: String,
   name: String,
@@ -6,6 +10,17 @@ const props = defineProps({
   cp: String,
   price: String,
 });
+
+const { toggleCheckout, toggleModal } = useUiStore();
+const { user } = storeToRefs(useAuthStore());
+
+const handleCheckoutButton = () => {
+  if (typeof user === "object") {
+    toggleCheckout();
+  } else {
+    toggleModal();
+  }
+};
 </script>
 
 <template>
@@ -27,9 +42,12 @@ const props = defineProps({
         <strong>{{ props.price }}€</strong>
         <small>/hora</small>
       </p>
-      <!-- <div class="cleaner-btn">
-        <a href="#modal-click" class="btn hire">Contactar</a>
-      </div> -->
+      <div v-if="user" class="cleaner-btn">
+        <a @click="handleCheckoutButton" class="btn hire">Contratar</a>
+      </div>
+      <div v-else-if="!user" class="cleaner-btn">
+        Inicia sesión antes de contratar
+      </div>
     </div>
   </div>
 </template>
