@@ -6,7 +6,7 @@ import { RouterLink } from "vue-router";
 
 const queryString = decodeURI(window.location.search);
 const urlParams = new URLSearchParams(queryString);
-const cityFilter = deleteAccents(urlParams.get("cityFilter"));
+const cityFilter = urlParams.get("cityFilter");
 const state = reactive({
   cleaners: [],
   urlParams: new URLSearchParams(queryString).get("cityFilter"),
@@ -49,7 +49,7 @@ function deleteAccents(string) {
 const printCleanersWithFilter = async () => {
   const q = query(
     collection(db, "cleaners"),
-    where("citySearch", "==", cityFilter)
+    where("citySearch", "==", deleteAccents(cityFilter))
   );
 
   const cleaners = [];
@@ -64,7 +64,7 @@ const printCleanersWithFilter = async () => {
 };
 
 onMounted(() => {
-  if (cityFilter === "") {
+  if (!cityFilter) {
     getCleaners();
   } else {
     printCleanersWithFilter();
