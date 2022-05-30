@@ -7,9 +7,15 @@ export const useUiStore = defineStore({
       isOpen: false,
       form: "login",
     },
+    checkout: {
+      isOpen: false,
+    },
   }),
   getters: {},
   actions: {
+    toggleCheckout() {
+      this.checkout.isOpen = !this.checkout.isOpen;
+    },
     toggleModal() {
       this.modal.isOpen = !this.modal.isOpen;
     },
