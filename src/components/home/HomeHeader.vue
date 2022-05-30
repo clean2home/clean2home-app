@@ -10,19 +10,14 @@ import HomeIllustration from "../../assets/home-illustration.svg";
         En Clean2Home conectamos a gente que busca servicios de limpieza con
         profesionales locales de confianza.
       </p>
-      <form form action="/cleaners.html" method="GET" class="home-form">
+      <form action="/cleaners" method="GET" class="home-form">
         <input
           type="text"
           name="cityFilter"
           id="cityFilter"
           placeholder="Introduce C.P. o ciudad"
         />
-        <a
-          href="javascript:;"
-          onclick="this.href='cleaners.html?cityFilter=' + document.getElementById('cityFilter').value"
-          class="btn home-btn"
-          >Buscar</a
-        >
+        <button type="submit" class="btn home-btn">Buscar</button>
       </form>
     </div>
     <img :src="HomeIllustration" alt="" />

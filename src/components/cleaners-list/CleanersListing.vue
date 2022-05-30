@@ -1,11 +1,15 @@
 <script setup>
-import { getDocs, collection } from "firebase/firestore";
+import { getDocs, collection, query, where } from "firebase/firestore";
 import { db } from "/firebase/config";
 import { reactive, onMounted } from "vue";
 import { RouterLink } from "vue-router";
 
+const queryString = decodeURI(window.location.search);
+const urlParams = new URLSearchParams(queryString);
+const cityFilter = urlParams.get("cityFilter");
 const state = reactive({
   cleaners: [],
+  urlParams: new URLSearchParams(queryString).get("cityFilter"),
 });
 
 const getCleaners = async () => {
@@ -21,14 +25,62 @@ const getCleaners = async () => {
   state.cleaners = cleaners;
 };
 
+function deleteAccents(string) {
+  const accents = {
+    á: "a",
+    é: "e",
+    í: "i",
+    ó: "o",
+    ú: "u",
+    Á: "A",
+    É: "E",
+    Í: "I",
+    Ó: "O",
+    Ú: "U",
+  };
+  return string
+    .toLowerCase()
+    .split("")
+    .map((word) => accents[word] || word)
+    .join("")
+    .toString();
+}
+
+const printCleanersWithFilter = async () => {
+  const q = query(
+    collection(db, "cleaners"),
+    where("citySearch", "==", deleteAccents(cityFilter))
+  );
+
+  const cleaners = [];
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    cleaners.push({
+      id: doc.id,
+      ...doc.data(),
+    });
+  });
+  state.cleaners = cleaners;
+};
+
 onMounted(() => {
-  getCleaners();
+  if (!cityFilter) {
+    getCleaners();
+  } else {
+    printCleanersWithFilter();
+  }
 });
 </script>
 
 <template>
   <div class="container-cards">
-    <div v-for="cleaner in state.cleaners" :key="cleaner.id">
+    <div v-if="state.cleaners.length === 0">
+      <h3>
+        Todavía no hay ningún cleaner en
+        <strong class="city">{{ state.urlParams }}</strong>
+      </h3>
+    </div>
+    <div v-else v-for="cleaner in state.cleaners" :key="cleaner.id">
       <div class="cleaner-container">
         <div class="cleaner-image">
           <img :src="cleaner.image" class="services-profile" />
