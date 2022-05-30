@@ -11,14 +11,14 @@ import { db } from "/firebase/config";
             Encuentra a la persona ideal para <strong>mimar tu hogar</strong>
           </h1>
         </div>
-        <form class="cleaners-form">
+        <form action="/cleaners" method="GET" class="cleaners-form">
           <input
             type="text"
             name="cityFilter"
             id="cityFilter"
             placeholder="Introduce C.P o ciudad"
           />
-          <a class="btn search">Buscar</a>
+          <button class="btn search">Buscar</button>
         </form>
       </div>
     </div>

@@ -31,10 +31,10 @@
 }
 
 .yellow p {
-  color: white;
+  color: var(--color-dark-gray);
   font-family: var(--ff-poppins);
   font-weight: bold;
-  text-shadow: 0 1.5px 0 rgb(50 50 50 / 50%);
+  //text-shadow: 0 1.5px 0 rgb(50 50 50 / 50%);
 }
 
 .text,
