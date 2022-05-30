@@ -5,9 +5,8 @@ import CleanerCheckout from "@/assets/cleaner-checkout.svg";
 import { helpers, maxValue, minValue, required } from "@vuelidate/validators";
 import useValidate from "@vuelidate/core";
 import { useAuthStore } from "../../stores/auth";
-import { storeToRefs } from "pinia";
 
-const { user } = storeToRefs(useAuthStore());
+const { user } = useAuthStore();
 
 const checkDate = (value) => {
   const today = new Date().getTime();
@@ -58,33 +57,30 @@ const v$ = useValidate(rules, state);
 const priceChange = () => {
   state.subtotal = props.price * state.hours;
 };
-/* 
-const handleSubmit = (e) => {
-  e.preventDefault();
-  v$.value.$validate();
-  console.log(v$.date);
-  const date = new Date(state.date).getTime();
-  saveWorkToDatabase(date, state.hours, props.id);
-}; */
 
 const handleSubmit = (e) => {
   e.preventDefault();
-  fetch("/.netlify/functions/stripe-charge", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      amount: state.subtotal * 100,
-      currency: "eur",
-      clanerId: props.id,
-      customerId: user.id,
-    }),
-  })
-    .then((res) => res.json())
-    .then((res) => {
-      window.location.href = res.sessionUrl;
-    });
+  v$.value.$validate();
+  if (!v$.value.$error) {
+    fetch("/.netlify/functions/stripe-charge", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        price: props.price * 100,
+        hours: state.hours,
+        cleanerId: props.id,
+        customerId: user.uid,
+        customerEmail: user.email,
+        startDate: new Date(state.date).getTime(),
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        window.location.href = res.sessionUrl;
+      });
+  }
 };
 </script>
 <template>

@@ -44,7 +44,10 @@ const rules = computed(() => {
     },
     passwordRepeat: {
       required: helpers.withMessage("Campo obligatorio", required),
-      sameAs: sameAs(state.password),
+      sameAs: helpers.withMessage(
+        "Las contraseñas deben coincidir",
+        sameAs(state.password)
+      ),
     },
   };
 });
