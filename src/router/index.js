@@ -1,7 +1,3 @@
-import { createApp } from "vue";
-import App from "../App.vue";
-import VueGtag from "vue-gtag";
-
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import CleanersView from "../views/CleanersView.vue";
@@ -10,6 +6,7 @@ import HowWorksView from "../views/HowWorksView.vue";
 import BeCleanerView from "../views/BeCleanerView.vue";
 import CleanerProfile from "../views/CleanerProfile.vue";
 import NotFound from "../views/404View.vue";
+import ClientProfile from "../views/ClientProfile.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -49,29 +46,12 @@ const router = createRouter({
       name: "NotFound",
       component: NotFound,
     },
+    {
+      path: "/client-profile",
+      name: "client-profile",
+      component: ClientProfile,
+    },
   ],
 });
 
 export default router;
-
-const app = createApp(HomeView);
-
-app.use(router);
-
-app.use(
-  VueGtag,
-  {
-    pageTrackerTemplate(to) {
-      return {
-        page_title: to.name,
-        page_path: to.path,
-      };
-    },
-    config: {
-      id: "G-779RNNM5NN",
-    },
-  },
-  router
-);
-
-app.mount("#app");

@@ -47,13 +47,14 @@ function navbarRes() {
         :class="{ active: state.navbarActive }"
       />
       <NavbarUser v-if="user" :class="{ active: state.navbarActive }" />
-      <li
+      <NavbarLink
+        href=""
+        name="Iniciar sesión"
         v-else-if="!user"
         class="navbar-links"
         :class="{ active: state.navbarActive }"
-      >
-        <a href="#" @click="toggleModal" id="login-register">Iniciar sesión</a>
-      </li>
+        @click="toggleModal"
+      />
     </ul>
   </nav>
   <AuthModal v-if="modal.isOpen" />
@@ -96,59 +97,12 @@ function navbarRes() {
     margin-right: 2em;
   }
 
-  .navbar-links {
-    margin: 0;
-    padding: 0.5em 0;
-    display: none;
-    width: 100vw;
-    text-align: center;
-
-    & a::after {
-      margin: auto;
-      content: "";
-      width: 0;
-      height: 2px;
-      display: block;
-      background: white;
-      transition: 300ms;
-    }
-
-    & a:hover {
-      color: white;
-    }
-
-    & a:hover::after {
-      width: 30%;
-    }
-  }
-
   .navbar-logo {
     margin-left: 2em;
   }
 
   .navbar-logo.active {
     display: none;
-  }
-
-  .navbar-links.active {
-    display: block;
-    margin: 0;
-    background: #fff;
-    cursor: pointer;
-
-    &:hover {
-      background: var(--color-primary);
-      color: white;
-    }
-
-    &:first-child {
-      margin-top: 3em;
-    }
-
-    &:last-child {
-      box-shadow: 0 10px 10px rgb(87 87 87 / 47.3%);
-      padding-bottom: 2em;
-    }
   }
 }
 

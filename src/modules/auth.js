@@ -13,23 +13,27 @@ import { auth, db } from "../../firebase/config";
 
 import { useUiStore } from "@/stores/ui";
 import { useAuthStore } from "@/stores/auth";
+import router from "../router";
 
 const provider = new GoogleAuthProvider();
 
 export const registerWithEmail = async (name, email, password) => {
   const { toggleModal } = useUiStore();
-  const { setUser } = useAuthStore();
+  const { getUser, setUser } = useAuthStore();
   createUserWithEmailAndPassword(auth, email, password)
     .then(async ({ user }) => {
       const profileImage = `https://api.multiavatar.com/${user.uid}.png`;
       await setDoc(doc(db, "users", user.uid), { cleaner: false });
       await updateProfile(user, { displayName: name, photoURL: profileImage });
+      await getUser();
       setUser(user);
       toggleModal();
       Swal.fire({
         title: "Registro correcto",
         text: "Ahora ya puedes empezar a buscar Cleaners en tu zona",
         icon: "success",
+      }).then(() => {
+        router.push("/", { replace: true });
       });
     })
     .catch((error) => {
@@ -57,6 +61,8 @@ export const loginWithEmail = (email, password) => {
         timerProgressBar: true,
         showConfirmButton: false,
         allowOutsideClick: false,
+      }).then(() => {
+        router.push({ path: `/`, replace: true });
       });
     })
     .catch((error) => {

@@ -15,9 +15,13 @@ export const useAuthStore = defineStore({
       onAuthStateChanged(auth, (user) => {
         if (user) {
           this.user = user;
+          localStorage.setItem("userId", user.uid);
           this.isCleaner();
         }
       });
+    },
+    setUser(user) {
+      this.user = user;
     },
     async isCleaner() {
       const userRef = doc(db, `users/${this.user.uid}`);
@@ -27,6 +31,7 @@ export const useAuthStore = defineStore({
     },
     logout() {
       this.user = false;
+      localStorage.removeItem("userId");
     },
   },
 });
