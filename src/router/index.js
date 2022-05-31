@@ -1,7 +1,3 @@
-import { createApp } from "vue";
-import App from "../App.vue";
-import VueGtag from "vue-gtag";
-
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import CleanersView from "../views/CleanersView.vue";
@@ -59,25 +55,3 @@ const router = createRouter({
 });
 
 export default router;
-
-const app = createApp(HomeView);
-
-app.use(router);
-
-app.use(
-  VueGtag,
-  {
-    pageTrackerTemplate(to) {
-      return {
-        page_title: to.name,
-        page_path: to.path,
-      };
-    },
-    config: {
-      id: "G-779RNNM5NN",
-    },
-  },
-  router
-);
-
-app.mount("#app");

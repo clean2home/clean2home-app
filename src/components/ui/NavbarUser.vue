@@ -1,26 +1,22 @@
 <script setup>
 import { useAuthStore } from "@/stores/auth";
 import { storeToRefs } from "pinia";
-import { startSignOut } from "../../modules/auth";
+import { RouterLink } from "vue-router";
 const { user } = storeToRefs(useAuthStore());
-
-const handleSignOut = () => {
-  startSignOut();
-};
 </script>
 <template>
   <li class="navbar-links">
     <div class="navbar-user">
       <span id="navbar-name">{{ user.displayName }}</span>
-      <div class="navbar-img-container">
-        <img
-          referrerpolicy="no-referrer"
-          id="navbar-img"
-          :src="user.photoURL"
-          :alt="user.name"
-          @click="handleSignOut"
-        />
-      </div>
+      <RouterLink to="/client-profile">
+        <div class="navbar-img-container">
+          <img
+            referrerpolicy="no-referrer"
+            id="navbar-img"
+            :src="user.photoURL"
+            :alt="user.name"
+          /></div
+      ></RouterLink>
     </div>
   </li>
 </template>
@@ -31,6 +27,7 @@ const handleSignOut = () => {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  font-family: var(--ff-poppins);
 
   & img {
     cursor: pointer;
@@ -39,6 +36,18 @@ const handleSignOut = () => {
     object-fit: cover;
     border-radius: 50%;
     margin-left: 1em;
+    transition: all 0.3s ease;
+
+    &:hover {
+      opacity: 0.8;
+      transform: scale(1.1);
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .navbar-user {
+    margin: 0;
   }
 }
 </style>

@@ -30,7 +30,7 @@ const handleGoogleLogin = () => {
           class="form-control"
           name="email"
           id="email"
-          placeholder="&#xf0e0; tu@email.com"
+          placeholder="👤 tu@email.com"
           v-model="state.email"
         />
       </div>
@@ -41,7 +41,7 @@ const handleGoogleLogin = () => {
           class="form-control"
           name="password"
           id="password"
-          placeholder="&#xf023;  &bull;&bull;&bull;&bull;&bull;&bull;"
+          placeholder="🔒  &bull;&bull;&bull;&bull;&bull;&bull;"
           v-model="state.password"
         />
       </div>

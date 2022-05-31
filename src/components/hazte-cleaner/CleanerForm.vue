@@ -11,7 +11,9 @@ import {
 } from "@vuelidate/validators";
 import { startCreateCleaner } from "@/modules/hazte-cleaner";
 import Swal from "sweetalert2";
+import { useRouter } from "vue-router";
 
+const router = useRouter();
 const inputImage = ref(null);
 
 const state = reactive({
@@ -117,7 +119,7 @@ const handleSubmit = (e) => {
           :class="{ error: v$.name.$error }"
           name="name"
           id="name"
-          placeholder="&#xf007; Fernando López"
+          placeholder="👤 Fernando López"
           v-model="state.name"
         />
         <span class="error-msg" v-if="v$.name.$error">
@@ -132,7 +134,7 @@ const handleSubmit = (e) => {
           :class="{ error: v$.cp.$error }"
           name="cp"
           id="cp"
-          placeholder="&#xf015; 47001"
+          placeholder="📍 47001"
           v-model="state.cp"
         />
         <span class="error-msg" v-if="v$.cp.$error">
@@ -145,7 +147,7 @@ const handleSubmit = (e) => {
           :class="{ error: v$.city.$error }"
           name="city"
           id="city"
-          placeholder="&#xf64f; Valladolid"
+          placeholder="🏢 Valladolid"
           v-model="state.city"
         />
         <span class="error-msg" v-if="v$.city.$error">
@@ -160,7 +162,7 @@ const handleSubmit = (e) => {
           :class="{ error: v$.phone.$error }"
           name="phone"
           id="phone"
-          placeholder="&#xf095; 666999999"
+          placeholder="📞 666999999"
           v-model="state.phone"
         />
         <span class="error-msg" v-if="v$.phone.$error">
@@ -189,7 +191,7 @@ const handleSubmit = (e) => {
           :class="{ error: v$.price.$error }"
           name="price"
           id="price"
-          placeholder="&#xf153; 15"
+          placeholder="💸 15"
           v-model="state.price"
         />
         <span class="error-msg" v-if="v$.price.$error">

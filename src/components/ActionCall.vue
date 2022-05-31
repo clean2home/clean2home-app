@@ -1,10 +1,16 @@
 <template>
   <section class="container">
     <a href="#" class="btn btn-teal join-as-user">
-      <p>Únete como usuario <font-awesome-icon icon="arrow-right" /></p>
+      <p>
+        Únete como usuario
+        <font-awesome-icon icon="arrow-right"></font-awesome-icon>
+      </p>
     </a>
     <a href="hazte-cleaner.html" class="btn btn-teal">
-      <p>Únete como cleaner <font-awesome-icon icon="arrow-right" /></p>
+      <p>
+        Únete como cleaner
+        <font-awesome-icon icon="arrow-right"></font-awesome-icon>
+      </p>
     </a>
   </section>
 </template>
