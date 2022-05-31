@@ -117,7 +117,7 @@ import CaserSegurosImage from "../assets/caser-seguros.png";
     </section>
   </main>
 </template>
-<style>
+<style lang="scss" scoped>
 .be-cleaner {
   font-family: var(--ff-poppins);
   margin: auto;

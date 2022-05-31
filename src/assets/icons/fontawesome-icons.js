@@ -16,6 +16,8 @@ import {
   faAngleLeft,
   faMapPin,
   faQuoteLeft,
+  faCircleCheck,
+  faCircleXmark,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -33,7 +35,9 @@ library.add(
   faAngleRight,
   faAngleLeft,
   faMapPin,
-  faQuoteLeft
+  faQuoteLeft,
+  faCircleCheck,
+  faCircleXmark
 );
 
 export default FontAwesomeIcon;

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const process = require("process");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const firebase = require("firebase-admin");
@@ -32,6 +33,11 @@ exports.handler = async ({ body, headers }) => {
       const cleanerRef = db.collection("cleaners").doc(cleanerId);
       const cleanerData = await cleanerRef.get(cleanerId);
 
+      const startDateObject = new Date(parseInt(startDate, 10));
+      const formattedStartDate = new Intl.DateTimeFormat("es").format(
+        startDateObject
+      );
+
       await db
         .collection("works")
         .doc(eventObject.id)
@@ -51,11 +57,9 @@ exports.handler = async ({ body, headers }) => {
         subject: "Servicio contratado en Clean2Home",
         text: `¡Enhorabuena ${
           eventObject.customer_details.name
-        }!\n Gracias por contratar un servicio en Clean2Home, has contratado un servicio con: ${
+        }!\n Gracias por contratar un servicio en Clean2Home, has contratado a ${
           cleanerData.data().name
-        } el dia ${new Date(parseInt(startDate, 10)).toLocaleDateString(
-          "es_ES"
-        )} \n
+        } el dia ${formattedStartDate} \n
         Un saludo, el equipo de Clean2Home`,
       };
       const cleanerMsg = {
@@ -64,11 +68,7 @@ exports.handler = async ({ body, headers }) => {
         subject: "¡Enhorabuena! Han contratado tus servicios en Clean2Home",
         text: `Hola ${cleanerData.data().name}. \n ${
           eventObject.customer_details.name
-        } ha contratado tus servicios el día ${new Date(
-          parseInt(startDate, 10)
-        ).toLocaleDateString(
-          "es_ES"
-        )} durante ${hours} horas. El precio total del servicio es de ${(
+        } ha contratado tus servicios el día ${formattedStartDate} durante ${hours} horas. El precio total del servicio es de ${(
           total / 100
         ).toFixed(2)}€ \n
          Un saludo, el equipo de Clean2Home`,

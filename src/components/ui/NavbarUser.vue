@@ -3,11 +3,15 @@ import { useAuthStore } from "@/stores/auth";
 import { storeToRefs } from "pinia";
 import { RouterLink } from "vue-router";
 const { user } = storeToRefs(useAuthStore());
+
 </script>
 <template>
   <li class="navbar-links">
     <div class="navbar-user">
-      <span id="navbar-name">{{ user.displayName }}</span>
+      <span class="navbar-name">
+        <span v-if="cleaner" class="cleaner">C</span>
+        {{ user.displayName }}
+      </span>
       <RouterLink to="/client-profile">
         <div class="navbar-img-container">
           <img
@@ -49,5 +53,25 @@ const { user } = storeToRefs(useAuthStore());
   .navbar-user {
     margin: 0;
   }
+}
+
+.navbar-name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.cleaner {
+  margin-right: 0.5em;
+  color: #fff;
+  font-size: 0.6em;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
 }
 </style>

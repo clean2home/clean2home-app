@@ -5,6 +5,8 @@ import AboutView from "../views/AboutView.vue";
 import HowWorksView from "../views/HowWorksView.vue";
 import BeCleanerView from "../views/BeCleanerView.vue";
 import CleanerProfile from "../views/CleanerProfile.vue";
+import CheckoutSuccessView from "../views/CheckoutSuccessView.vue";
+import CheckoutCancelView from "../views/CheckoutCancelView.vue";
 import NotFound from "../views/404View.vue";
 import ClientProfile from "../views/ClientProfile.vue";
 
@@ -42,15 +44,29 @@ const router = createRouter({
       component: CleanerProfile,
     },
     {
-      path: "/404",
-      name: "NotFound",
-      component: NotFound,
+      path: "/checkout/success",
+      name: "checkout-success",
+      component: CheckoutSuccessView,
+    },
+    {
+      path: "/checkout/cancel",
+      name: "checkout-cancel",
+      component: CheckoutCancelView,
     },
     {
       path: "/client-profile",
       name: "client-profile",
       component: ClientProfile,
     },
+    {
+      path: "/404",
+      name: "NotFound",
+      component: NotFound,
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      redirect: { name: "NotFound" },
+    }
   ],
 });
 
