@@ -10,6 +10,7 @@ import HowWorksView from "../views/HowWorksView.vue";
 import BeCleanerView from "../views/BeCleanerView.vue";
 import CleanerProfile from "../views/CleanerProfile.vue";
 import NotFound from "../views/404View.vue";
+import ClientProfile from "../views/ClientProfile.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -48,6 +49,11 @@ const router = createRouter({
       path: "/404",
       name: "NotFound",
       component: NotFound,
+    },
+    {
+      path: "/client-profile",
+      name: "client-profile",
+      component: ClientProfile,
     },
   ],
 });
