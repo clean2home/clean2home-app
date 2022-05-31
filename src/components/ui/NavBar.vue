@@ -7,6 +7,7 @@ import Logo from "@/assets/logo.svg";
 import AuthModal from "./modal/AuthModal.vue";
 import { useAuthStore } from "../../stores/auth";
 import { storeToRefs } from "pinia";
+import NavBarHamburger from "./NavBarHamburger.vue";
 
 const links = reactive([
   { name: "Inicio", href: "/" },
@@ -18,31 +19,47 @@ const links = reactive([
 
 const { modal, toggleModal } = useUiStore();
 const { user } = storeToRefs(useAuthStore());
+
+const state = reactive({ navbarActive: false });
+function navbarRes() {
+  /*toggleButton.classList.toggle("active");
+  navbarLogo.classList.toggle("active");
+  for (let i = 0; i < navbarLinks.length; i++) {
+    navbarLinks[i].classList.toggle("active");
+  }*/
+  state.navbarActive = !state.navbarActive;
+}
 </script>
 <template>
   <nav class="navbar">
     <ul class="navbar-list">
-      <li class="navbar-logo">
+      <li class="navbar-logo" :class="{ active: state.navbarActive }">
         <a href="/"><img :src="Logo" alt="Clean2Home" title="Clean2Home" /></a>
       </li>
-      <li class="navbar-toggle">
-        <font-awesome-icon icon="bars" />
+      <li class="navbar-toggle" @click="navbarRes">
+        <NavBarHamburger :class="{ active: state.navbarActive }" />
       </li>
       <NavbarLink
         v-for="link in links"
         :key="link.name"
         :name="link.name"
         :href="link.href"
+        :class="{ active: state.navbarActive }"
       />
-      <NavbarUser v-if="user" />
-      <li v-else-if="!user" class="navbar-links">
-        <a href="#" @click="toggleModal" id="login-register">Iniciar sesión</a>
-      </li>
+      <NavbarUser v-if="user" :class="{ active: state.navbarActive }" />
+      <NavbarLink
+        href=""
+        name="Iniciar sesión"
+        v-else-if="!user"
+        class="navbar-links"
+        :class="{ active: state.navbarActive }"
+        @click="toggleModal"
+      />
     </ul>
   </nav>
   <AuthModal v-if="modal.isOpen" />
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
 .navbar-list {
   display: flex;
   align-items: center;
@@ -69,28 +86,37 @@ const { user } = storeToRefs(useAuthStore());
 
 @media (max-width: 1024px) {
   .navbar-list {
+    top: 0;
     flex-wrap: wrap;
+    height: fit-content;
+    width: 100%;
   }
 
   .navbar-toggle {
     display: block;
+    margin-right: 2em;
   }
 
-  .active {
-    display: block;
-    margin-top: 1em;
+  .navbar-logo {
+    margin-left: 2em;
+  }
 
-    &:first-child {
-      margin-top: 3em;
-    }
+  .navbar-logo.active {
+    display: none;
   }
 }
 
 @media (max-width: 500px) {
   .navbar-list {
     width: 100%;
-    padding-left: 1em;
-    padding-right: 2em;
+  }
+
+  .navbar-toggle {
+    margin-right: 1em;
+  }
+
+  .navbar-logo {
+    margin-left: 1em;
   }
 }
 </style>

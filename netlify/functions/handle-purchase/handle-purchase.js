@@ -42,6 +42,7 @@ exports.handler = async ({ body, headers }) => {
         .collection("works")
         .doc(eventObject.id)
         .set({
+          cleanerName: cleanerData.data().name,
           customerId,
           cleanerId,
           startDate: firebase.firestore.Timestamp.fromMillis(startDate),

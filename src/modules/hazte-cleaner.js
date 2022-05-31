@@ -2,7 +2,7 @@ import { doc, setDoc, updateDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import Swal from "sweetalert2";
 import { auth, storage, db } from "../../firebase/config";
-import { useRouter } from "vue-router";
+import router from "../router";
 
 function deleteAccents(string) {
   const accents = {
@@ -62,7 +62,6 @@ export const uploadImage = async (image) => {
 };
 
 const createCleaner = (cleaner) => {
-  const router = useRouter();
   const userId = auth.currentUser.uid;
   const cleanerRef = doc(db, "cleaners", userId);
   const userRef = doc(db, "users", userId);

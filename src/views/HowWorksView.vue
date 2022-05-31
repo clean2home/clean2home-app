@@ -1,9 +1,4 @@
 <script setup>
-import ArrowIcon from "../assets/how-works-icons/arrow-right-to-bracket-solid.svg";
-import CalendarIcon from "../assets/how-works-icons/calendar-check-solid.svg";
-import CheckIcon from "../assets/how-works-icons/check-solid.svg";
-import FlagIcon from "../assets/how-works-icons/flag-checkered-solid.svg";
-import MagnifyingGlassIcon from "../assets/how-works-icons/magnifying-glass-solid.svg";
 import CaserSegurosImage from "../assets/caser-seguros.png";
 </script>
 <!-- //  <script src="https://kit.fontawesome.com/790908a15c.js" crossorigin="anonymous"></script> -->
@@ -19,10 +14,7 @@ import CaserSegurosImage from "../assets/caser-seguros.png";
       <div class="container-steps">
         <div class="steps-left">
           <button class="icon">
-            <font-awesome-icon
-              icon="fa-solid fa-right-to-bracket"
-            ></font-awesome-icon>
-            <img :src="ArrowIcon" class="icon-svg" />
+            <font-awesome-icon icon="right-to-bracket"></font-awesome-icon>
           </button>
           <h4 class="text-green">Regístrate</h4>
           <p class="explain-left">
@@ -32,10 +24,7 @@ import CaserSegurosImage from "../assets/caser-seguros.png";
         </div>
         <div class="step-right">
           <button class="icon">
-            <font-awesome-icon
-              icon="fa-solid fa-magnifying-glass"
-            ></font-awesome-icon>
-            <img :src="MagnifyingGlassIcon" class="icon-svg" />
+            <font-awesome-icon icon="magnifying-glass"></font-awesome-icon>
           </button>
           <h4 class="text-green">Busca en tu ciudad</h4>
           <p class="explain-right">
@@ -44,8 +33,7 @@ import CaserSegurosImage from "../assets/caser-seguros.png";
         </div>
         <div class="steps-left">
           <button class="icon">
-            <font-awesome-icon icon="fa-solid fa-check" />
-            <img :src="CheckIcon" class="icon-svg" />
+            <font-awesome-icon icon="check" />
           </button>
           <h4 class="text-green">Selecciona a tu cleaner</h4>
           <p class="explain-left">
@@ -54,10 +42,7 @@ import CaserSegurosImage from "../assets/caser-seguros.png";
         </div>
         <div class="step-right">
           <button class="icon">
-            <font-awesome-icon
-              icon="fa-solid fa-calendar-check"
-            ></font-awesome-icon>
-            <img :src="CalendarIcon" class="icon-svg" />
+            <font-awesome-icon icon="calendar-check"></font-awesome-icon>
           </button>
           <h4 class="text-green">Contrata el servicio</h4>
           <p class="explain-right">
@@ -66,10 +51,7 @@ import CaserSegurosImage from "../assets/caser-seguros.png";
         </div>
         <div class="steps-left">
           <button class="icon">
-            <font-awesome-icon
-              icon="fa-solid fa-flag-checkered"
-            ></font-awesome-icon>
-            <img :src="FlagIcon" class="icon-svg" />
+            <font-awesome-icon icon="flag-checkered"></font-awesome-icon>
           </button>
           <h4 class="text-green">Disfruta y paga el servicio</h4>
           <p class="explain-left">

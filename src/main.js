@@ -1,5 +1,6 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
+import VueGtag from "vue-gtag";
 
 import App from "./App.vue";
 import router from "./router";
@@ -9,6 +10,21 @@ import { useAuthStore } from "@/stores/auth";
 (async () => {
   const app = createApp(App);
 
+  app.use(
+    VueGtag,
+    {
+      pageTrackerTemplate(to) {
+        return {
+          page_title: to.name,
+          page_path: to.path,
+        };
+      },
+      config: {
+        id: "G-779RNNM5NN",
+      },
+    },
+    router
+  );
   app.use(createPinia());
   const { getUser } = useAuthStore();
   await getUser();

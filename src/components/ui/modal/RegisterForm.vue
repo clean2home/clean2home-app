@@ -73,7 +73,7 @@ const handleSubmit = (e) => {
           :class="{ error: v$.name.$error }"
           name="name"
           id="name"
-          placeholder="&#xf007; tu nombre"
+          placeholder="👤 tu nombre"
           v-model="state.name"
         />
         <span class="error-msg" v-if="v$.name.$error">
@@ -88,7 +88,7 @@ const handleSubmit = (e) => {
           :class="{ error: v$.email.$error }"
           name="email"
           id="email"
-          placeholder="&#xf0e0; tu@email.com"
+          placeholder="✉️ tu@email.com"
           v-model="state.email"
         />
         <span class="error-msg" v-if="v$.email.$error">
@@ -103,7 +103,7 @@ const handleSubmit = (e) => {
           :class="{ error: v$.password.$error }"
           name="password"
           id="password"
-          placeholder="&#xf023;  &bull;&bull;&bull;&bull;&bull;&bull;"
+          placeholder="🔒  &bull;&bull;&bull;&bull;&bull;&bull;"
           v-model="state.password"
         />
         <span class="error-msg" v-if="v$.password.$error">
@@ -118,7 +118,7 @@ const handleSubmit = (e) => {
           :class="{ error: v$.passwordRepeat.$error }"
           name="passwordRepeat"
           id="passwordRepeat"
-          placeholder="&#xf023;  &bull;&bull;&bull;&bull;&bull;&bull;"
+          placeholder="🔒  &bull;&bull;&bull;&bull;&bull;&bull;"
           v-model="state.passwordRepeat"
         />
         <span class="error-msg" v-if="v$.passwordRepeat.$error">

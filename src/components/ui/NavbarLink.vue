@@ -40,19 +40,66 @@ defineProps({
   }
 }
 
+.navbar-links.user {
+  display: inline;
+  font-family: var(--ff-poppins);
+  margin: 0;
+
+  & a {
+    color: var(--color-dark-gray);
+  }
+
+  & a::after {
+    content: "";
+  }
+}
+
 @media (max-width: 1024px) {
   .navbar-links {
+    margin: 0;
+    padding: 0.5em 0;
     display: none;
-    width: 100%;
+    width: 100vw;
     text-align: center;
-    margin: 0.5em;
 
     & a::after {
-      margin-top: 0.5em;
+      margin: auto;
+      content: "";
+      width: 0;
+      height: 2px;
+      display: block;
+      background: white;
+      transition: 300ms;
+    }
+
+    & a:hover {
+      color: white;
     }
 
     & a:hover::after {
       width: 30%;
+    }
+  }
+
+  .navbar-links.active,
+  .navbar-links.active.user {
+    display: block;
+    margin: 0;
+    background: #fff;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--color-primary);
+      color: white;
+    }
+
+    &:first-child {
+      margin-top: 3em;
+    }
+
+    &:last-child {
+      box-shadow: 0 10px 10px rgb(87 87 87 / 47.3%);
+      padding-bottom: 2em;
     }
   }
 }
