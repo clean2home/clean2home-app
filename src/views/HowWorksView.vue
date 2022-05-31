@@ -1,20 +1,17 @@
 <script setup>
 import ArrowIcon from "../assets/how-works-icons/arrow-right-to-bracket-solid.svg";
-import CalendarIcon from "../assets/how-works-icons/calendar-check-solid.svg"
+import CalendarIcon from "../assets/how-works-icons/calendar-check-solid.svg";
 import CheckIcon from "../assets/how-works-icons/check-solid.svg";
 import FlagIcon from "../assets/how-works-icons/flag-checkered-solid.svg";
 import MagnifyingGlassIcon from "../assets/how-works-icons/magnifying-glass-solid.svg";
 import CaserSegurosImage from "../assets/caser-seguros.png";
-
 </script>
 <!-- //  <script src="https://kit.fontawesome.com/790908a15c.js" crossorigin="anonymous"></script> -->
 <template>
- <main class="como-funciona">
+  <main class="como-funciona">
     <section class="funciona">
       <div class="slogan">
-        <h1 class="funciona-slogan">
-          Descubre cómo <strong>funciona</strong>
-        </h1>
+        <h1 class="funciona-slogan">Descubre cómo <strong>funciona</strong></h1>
       </div>
     </section>
     <section class="steps-client">
@@ -22,18 +19,22 @@ import CaserSegurosImage from "../assets/caser-seguros.png";
       <div class="container-steps">
         <div class="steps-left">
           <button class="icon">
-            <font-awesome-icon icon="fa-solid fa-right-to-bracket"></font-awesome-icon>
+            <font-awesome-icon
+              icon="fa-solid fa-right-to-bracket"
+            ></font-awesome-icon>
             <img :src="ArrowIcon" class="icon-svg" />
           </button>
           <h4 class="text-green">Regístrate</h4>
           <p class="explain-left">
-            <a href="#" class="btn-register">Date de alta</a>, introduce tus datos, configura tu cuenta y comienza a
-            buscar tu cleaner
+            <a href="#" class="btn-register">Date de alta</a>, introduce tus
+            datos, configura tu cuenta y comienza a buscar tu cleaner
           </p>
         </div>
         <div class="step-right">
           <button class="icon">
-            <font-awesome-icon icon="fa-solid fa-magnifying-glass"></font-awesome-icon>
+            <font-awesome-icon
+              icon="fa-solid fa-magnifying-glass"
+            ></font-awesome-icon>
             <img :src="MagnifyingGlassIcon" class="icon-svg" />
           </button>
           <h4 class="text-green">Busca en tu ciudad</h4>
@@ -53,7 +54,9 @@ import CaserSegurosImage from "../assets/caser-seguros.png";
         </div>
         <div class="step-right">
           <button class="icon">
-            <font-awesome-icon icon="fa-solid fa-calendar-check"></font-awesome-icon>
+            <font-awesome-icon
+              icon="fa-solid fa-calendar-check"
+            ></font-awesome-icon>
             <img :src="CalendarIcon" class="icon-svg" />
           </button>
           <h4 class="text-green">Contrata el servicio</h4>
@@ -63,12 +66,15 @@ import CaserSegurosImage from "../assets/caser-seguros.png";
         </div>
         <div class="steps-left">
           <button class="icon">
-            <font-awesome-icon icon="fa-solid fa-flag-checkered"></font-awesome-icon>
-            <img :src="FlagIcon" class="icon-svg"/>
+            <font-awesome-icon
+              icon="fa-solid fa-flag-checkered"
+            ></font-awesome-icon>
+            <img :src="FlagIcon" class="icon-svg" />
           </button>
           <h4 class="text-green">Disfruta y paga el servicio</h4>
           <p class="explain-left">
-            Una vez disfrutas del servicio, paga mediante las facilidades que te da nuestra web y valora al cleaner
+            Una vez disfrutas del servicio, paga mediante las facilidades que te
+            da nuestra web y valora al cleaner
           </p>
         </div>
       </div>
@@ -76,50 +82,60 @@ import CaserSegurosImage from "../assets/caser-seguros.png";
 
     <section class="be-cleaner">
       <h2>Si quieres ser cleaner</h2>
-      <p>En Clean2Home te ponemos en contanto con clientes deseosos de contratar tus servicios. Tu pones el precio y
-        el horario. ¡Unete!
+      <p>
+        En Clean2Home te ponemos en contanto con clientes deseosos de contratar
+        tus servicios. Tu pones el precio y el horario. ¡Unete!
       </p>
       <div class="cleaner-grid">
         <div class="cleaner-grid-card">
           <h3>1. Resgístrate como cleaner en Clean2Home</h3>
-          <p>Añade información sobre ti e imágenes que muestren tu personalidad y profesionalidad</p>
+          <p>
+            Añade información sobre ti e imágenes que muestren tu personalidad y
+            profesionalidad
+          </p>
         </div>
         <div class="cleaner-grid-card">
           <h3>2. Indica tu disponibilidad</h3>
-          <p>Puedes organizarte como mejor te venga, sin horarios y sin horas mínimas que trabajar a la semana</p>
+          <p>
+            Puedes organizarte como mejor te venga, sin horarios y sin horas
+            mínimas que trabajar a la semana
+          </p>
         </div>
         <div class="cleaner-grid-card">
           <h3>3. Atento a los mensajes</h3>
-          <p>Te avisaremos por mensaje cuando un cliente necesite tu servicio. Confirma la cita y prepara todo lo
-            necesario</p>
+          <p>
+            Te avisaremos por mensaje cuando un cliente necesite tu servicio.
+            Confirma la cita y prepara todo lo necesario
+          </p>
         </div>
         <div class="cleaner-grid-card">
           <h3>4. Gana dinero</h3>
-          <p>Cumple con el servicio y recibe el dinero antes de salir por la puerta del cliente. Pide una buena
-            reseña, ¡todo suma para conseguir tu próximo cliente!</p>
+          <p>
+            Cumple con el servicio y recibe el dinero antes de salir por la
+            puerta del cliente. Pide una buena reseña, ¡todo suma para conseguir
+            tu próximo cliente!
+          </p>
         </div>
       </div>
       <div class="cleaner-seguro-container">
         <h2>Asociados con Caser Seguros</h2>
         <div class="cleaner-seguro">
-          <p>Porque todos sabemos lo que le pasó a la abuelita de Caperucita Roja, nosotros estamos asegurados con
-            <strong>Caser Seguros</strong>. <br>
-            Cualquier incidente que sufra cualquiera de las partes estará cubierto con nuestro seguro.<br>
-            Porque queremos que solo te preoucpes de disfrutar de tu hogar impecable.
+          <p>
+            Porque todos sabemos lo que le pasó a la abuelita de Caperucita
+            Roja, nosotros estamos asegurados con
+            <strong>Caser Seguros</strong>. <br />
+            Cualquier incidente que sufra cualquiera de las partes estará
+            cubierto con nuestro seguro.<br />
+            Porque queremos que solo te preoucpes de disfrutar de tu hogar
+            impecable.
           </p>
-          <img :src="CaserSegurosImage" alt="caser seguros">
+          <img :src="CaserSegurosImage" alt="caser seguros" />
         </div>
       </div>
-
     </section>
-
-
-
-
-
   </main>
 </template>
-<style>
+<style lang="scss" scoped>
 .be-cleaner {
   font-family: var(--ff-poppins);
   margin: auto;
@@ -248,24 +264,34 @@ import CaserSegurosImage from "../assets/caser-seguros.png";
   font-weight: 600;
 }
 
-
-.fa-magnifying-glass:before, .fa-search:before {
-    content: "\f002";
+.fa-magnifying-glass:before,
+.fa-search:before {
+  content: "\f002";
 }
 
 @media (min-width: 1200px) {
-  .cleaner-grid { grid-template-columns: repeat(2, 1fr); }
-  .cleaner-seguro { flex-direction: row; }
-  .steps-left { padding-left: 25%; }
-  .step-right { padding-right: 25%; }
-  .steps-client { padding-bottom: 0; }
+  .cleaner-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cleaner-seguro {
+    flex-direction: row;
+  }
+  .steps-left {
+    padding-left: 25%;
+  }
+  .step-right {
+    padding-right: 25%;
+  }
+  .steps-client {
+    padding-bottom: 0;
+  }
 }
 
 /* Estilo iconos SVG */
 
 .icon-svg {
-  width:54%; 
-  height: auto; 
+  width: 54%;
+  height: auto;
   margin-left: 22%;
 }
 </style>

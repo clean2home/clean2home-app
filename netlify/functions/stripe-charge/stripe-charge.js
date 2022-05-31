@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // with thanks https://github.com/alexmacarthur/netlify-lambda-function-example/blob/68a0cdc05e201d68fe80b0926b0af7ff88f15802/lambda-src/purchase.js
 const process = require("process");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
@@ -40,7 +41,7 @@ const handler = async function (event) {
       customerEmail: body.customerEmail,
       startDate: body.startDate,
       endDate: body.startDate + body.hours * 3600000,
-      total: body.price,
+      total: body.price * body.hours,
       hours: body.hours,
     },
   });

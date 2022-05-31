@@ -2,7 +2,7 @@
 import { useAuthStore } from "@/stores/auth";
 import { storeToRefs } from "pinia";
 import { startSignOut } from "../../modules/auth";
-const { user } = storeToRefs(useAuthStore());
+const { user, cleaner } = storeToRefs(useAuthStore());
 
 const handleSignOut = () => {
   startSignOut();
@@ -11,7 +11,10 @@ const handleSignOut = () => {
 <template>
   <li class="navbar-links">
     <div class="navbar-user">
-      <span id="navbar-name">{{ user.displayName }}</span>
+      <span class="navbar-name">
+        <span v-if="cleaner" class="cleaner">C</span>
+        {{ user.displayName }}
+      </span>
       <div class="navbar-img-container">
         <img
           referrerpolicy="no-referrer"
@@ -40,5 +43,25 @@ const handleSignOut = () => {
     border-radius: 50%;
     margin-left: 1em;
   }
+}
+
+.navbar-name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.cleaner {
+  margin-right: 0.5em;
+  color: #fff;
+  font-size: 0.6em;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
 }
 </style>
