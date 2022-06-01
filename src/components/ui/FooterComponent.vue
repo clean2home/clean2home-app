@@ -19,16 +19,10 @@
         <h3 class="column-title">Servicios</h3>
         <ul class="items">
           <li>
-            <a href="cleaners.html">Cleaners</a>
+            <a href="/cleaners">Servicios</a>
           </li>
           <li>
-            <a href="under-construction.html">Limpieza</a>
-          </li>
-          <li>
-            <a href="under-construction.html">Comida</a>
-          </li>
-          <li>
-            <a href="under-construction.html">Limpieza de ropa</a>
+            <a href="/limpieza">Limpieza</a>
           </li>
         </ul>
       </li>
@@ -36,13 +30,13 @@
         <h3 class="column-title">Información</h3>
         <ul class="items">
           <li>
-            <a href="como-funciona.html">Cómo funciona</a>
+            <a href="/como-funciona">Cómo funciona</a>
           </li>
           <li>
-            <a href="about-us.html">Sobre nosotros</a>
+            <a href="/about-us">Sobre nosotros</a>
           </li>
           <li>
-            <a href="hazte-cleaner.html">Trabaja con nosotros</a>
+            <a href="/hazte-cleaner">Trabaja con nosotros</a>
           </li>
         </ul>
       </li>
