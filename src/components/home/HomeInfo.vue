@@ -40,7 +40,7 @@ import InfoMoney from "../../assets/info-money.svg";
       </article>
     </div>
     <div class="button-container">
-      <a href="como-funciona.html" class="client-button">Más Información</a>
+      <a href="/como-funciona" class="client-button">Más Información</a>
     </div>
   </section>
 </template>

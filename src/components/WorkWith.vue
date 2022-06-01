@@ -11,7 +11,7 @@ import WorkWithUs from "@/assets/work-with-us.svg";
       donde tu decides el horario, el precio y el radio de desplazamiento. ¿Te
       apuntas?
     </p>
-    <a href="hazte-cleaner.html" class="btn home-btn work-with-us-btn"
+    <a href="/hazte-cleaner" class="btn home-btn work-with-us-btn"
       >Hazte Cleaner</a
     >
   </section>
