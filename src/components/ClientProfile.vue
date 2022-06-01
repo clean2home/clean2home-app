@@ -39,7 +39,7 @@ const handleSignOut = () => {
 </script>
 <template>
   <div class="container">
-    <h1 class="title-table">Mis reservas</h1>
+    <h1>Mis reservas</h1>
     <p v-if="state.works.length === 0">Todavía no has hecho ninguna reserva</p>
     <div v-else class="table">
       <table class="record-table">
@@ -95,6 +95,7 @@ const handleSignOut = () => {
   align-items: flex-start;
   width: 80%;
   margin: 0 auto;
+  min-height: 50vh;
 }
 
 h1 {
@@ -103,30 +104,6 @@ h1 {
   font-weight: 700;
   margin-bottom: 1em;
 }
-/*
-.record-table {
-  overflow-x: auto;
-  width: 80vw;
-  background-color: #ffffff;
-  border-collapse: collapse;
-  border-width: 1px;
-  border-color: #00cba9;
-  border-style: solid;
-  color: #000000;
-}
-
-table.record-table td,
-table.record-table th {
-  border-width: 1px;
-  border-color: #00cba9;
-  border-style: solid;
-  padding: 3px;
-  font-weight: bold;
-}
-
-table.record-table thead {
-  background-color: #ffffff;
-} */
 
 table {
   border-radius: 10px;

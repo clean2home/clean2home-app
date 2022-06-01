@@ -39,7 +39,7 @@ const handleSubmit = (e) => {
           :class="{ error: v$.email.$error }"
           name="emailReset"
           id="emailReset"
-          placeholder="&#xf0e0; tu@email.com"
+          placeholder="✉️ tu@email.com"
           v-model="state.email"
         />
         <span class="error-msg" v-if="v$.email.$error">
