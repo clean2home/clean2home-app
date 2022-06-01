@@ -3,6 +3,8 @@ import { getDocs, collection, query, where } from "firebase/firestore";
 import { db } from "/firebase/config";
 import { reactive, onMounted } from "vue";
 import { RouterLink } from "vue-router";
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/vue-loading.css";
 
 const queryString = decodeURI(window.location.search);
 const urlParams = new URLSearchParams(queryString);
@@ -10,6 +12,7 @@ const cityFilter = urlParams.get("cityFilter");
 const state = reactive({
   cleaners: [],
   urlParams: new URLSearchParams(queryString).get("cityFilter"),
+  isLoading: true,
 });
 
 const getCleaners = async () => {
@@ -23,6 +26,7 @@ const getCleaners = async () => {
     });
   });
   state.cleaners = cleaners;
+  state.isLoading = false;
 };
 
 function deleteAccents(string) {
@@ -61,6 +65,7 @@ const printCleanersWithFilter = async () => {
     });
   });
   state.cleaners = cleaners;
+  state.isLoading = false;
 };
 
 onMounted(() => {
@@ -74,7 +79,7 @@ onMounted(() => {
 
 <template>
   <div class="container-cards">
-    <div v-if="state.cleaners.length === 0">
+    <div v-if="state.cleaners.length === 0 && !state.isLoading">
       <h3>
         Todavía no hay ningún cleaner en
         <strong class="city">{{ state.urlParams }}</strong>
@@ -119,6 +124,12 @@ onMounted(() => {
         </div>
       </div>
     </div>
+    <Loading
+      v-model:active="state.isLoading"
+      color="#00cba9"
+      :width="150"
+      :height="150"
+    />
   </div>
 </template>
 
@@ -390,7 +401,7 @@ onMounted(() => {
   }
 
   .cleaner-container {
-    width: 30vh;
+    width: 80vw;
     display: flex;
     flex-direction: column;
     align-items: center;

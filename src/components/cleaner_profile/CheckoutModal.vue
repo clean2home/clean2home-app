@@ -5,6 +5,8 @@ import CleanerCheckout from "@/assets/cleaner-checkout.svg";
 import { helpers, maxValue, minValue, required } from "@vuelidate/validators";
 import useValidate from "@vuelidate/core";
 import { useAuthStore } from "../../stores/auth";
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/vue-loading.css";
 
 const { user } = useAuthStore();
 
@@ -28,6 +30,7 @@ const state = reactive({
   date: 0,
   hours: 1,
   subtotal: props.price,
+  isLoading: false,
 });
 
 const rules = computed(() => {
@@ -62,6 +65,7 @@ const handleSubmit = (e) => {
   e.preventDefault();
   v$.value.$validate();
   if (!v$.value.$error) {
+    state.isLoading = true;
     fetch("/.netlify/functions/stripe-charge", {
       method: "POST",
       headers: {
@@ -79,6 +83,9 @@ const handleSubmit = (e) => {
       .then((res) => res.json())
       .then((res) => {
         window.location.href = res.sessionUrl;
+      })
+      .catch(() => {
+        state.isLoading = false;
       });
   }
 };
@@ -86,6 +93,12 @@ const handleSubmit = (e) => {
 <template>
   <div class="container">
     <div class="modal">
+      <Loading
+        v-model:active="state.isLoading"
+        color="#00cba9"
+        :width="150"
+        :height="150"
+      />
       <span class="close" id="close-modal" @click="toggleCheckout"
         >&times;</span
       >
@@ -139,6 +152,7 @@ const handleSubmit = (e) => {
   font-family: var(--ff-poppins);
   font-size: 2.5em;
   line-height: 1;
+  text-align: right;
 
   & strong {
     color: var(--color-primary);
@@ -159,6 +173,7 @@ const handleSubmit = (e) => {
 }
 .modal {
   width: 80vw;
+  max-width: 900px;
   height: 80vh;
   overflow: hidden;
   background-color: #fefefe;
@@ -175,6 +190,7 @@ const handleSubmit = (e) => {
 
 .cleaner-illustration {
   width: 100%;
+  height: 100%;
 }
 
 .form {
@@ -234,5 +250,27 @@ const handleSubmit = (e) => {
   box-shadow: 0 2.5px 0 teal;
   position: relative;
   top: 3px;
+}
+
+@media (max-width: 760px) {
+  .cleaner-illustration {
+    display: none;
+  }
+
+  .home-slogan {
+    text-align: center;
+  }
+
+  .form {
+    align-items: center;
+  }
+  .modal-content {
+    padding: 0.8em;
+  }
+}
+@media (max-width: 500px) {
+  .modal {
+    width: 95vw;
+  }
 }
 </style>

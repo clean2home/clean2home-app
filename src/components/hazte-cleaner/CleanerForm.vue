@@ -11,9 +11,7 @@ import {
 } from "@vuelidate/validators";
 import { startCreateCleaner } from "@/modules/hazte-cleaner";
 import Swal from "sweetalert2";
-import { useRouter } from "vue-router";
 
-const router = useRouter();
 const inputImage = ref(null);
 
 const state = reactive({
@@ -49,7 +47,7 @@ const rules = computed(() => {
         minLength(5)
       ),
       maxLength: helpers.withMessage(
-        "Debes ingresar un teléfono válido",
+        "Debes ingresar un código postal válido",
         maxLength(5)
       ),
     },

@@ -52,4 +52,10 @@ const miMetodo = () => {
   box-shadow: 3px 4px 9px 2px #0000001e;
   margin-bottom: 80px;
 }
+
+@media (max-width: 1260px) {
+  #maps {
+    width: 80vw;
+  }
+}
 </style>
