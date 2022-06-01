@@ -1,17 +1,38 @@
+<script setup>
+import { storeToRefs } from "pinia";
+import Swal from "sweetalert2";
+import { RouterLink } from "vue-router";
+import { useAuthStore } from "../stores/auth";
+import { useUiStore } from "../stores/ui";
+
+const { toggleModal } = useUiStore();
+const { user } = storeToRefs(useAuthStore());
+const toggleModalIfLogged = () => {
+  if (!user._object.user) {
+    toggleModal();
+  } else {
+    Swal.fire(
+      "Ya has iniciado sesión",
+      "No puedes volver a registrarte si ya has iniciado sesión",
+      "info"
+    );
+  }
+};
+</script>
 <template>
   <section class="container">
-    <a href="#" class="btn btn-teal join-as-user">
+    <span class="btn btn-teal join-as-user" @click="toggleModalIfLogged">
       <p>
         Únete como usuario
         <font-awesome-icon icon="arrow-right"></font-awesome-icon>
       </p>
-    </a>
-    <a href="hazte-cleaner.html" class="btn btn-teal">
+    </span>
+    <RouterLink to="/hazte-cleaner" class="btn btn-teal">
       <p>
         Únete como cleaner
         <font-awesome-icon icon="arrow-right"></font-awesome-icon>
       </p>
-    </a>
+    </RouterLink>
   </section>
 </template>
 <style lang="scss" scoped>

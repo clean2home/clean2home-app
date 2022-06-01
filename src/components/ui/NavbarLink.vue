@@ -38,6 +38,12 @@ defineProps({
   & a:hover::after {
     width: 100%;
   }
+
+  &:last-child {
+    & a::after {
+      height: 0;
+    }
+  }
 }
 
 .navbar-links.user {

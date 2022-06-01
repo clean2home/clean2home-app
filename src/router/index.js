@@ -66,8 +66,10 @@ const router = createRouter({
     {
       path: "/:pathMatch(.*)*",
       redirect: { name: "NotFound" },
-    }
+    },
   ],
 });
-
+router.beforeEach(() => {
+  window.scrollTo(0, 0);
+});
 export default router;
