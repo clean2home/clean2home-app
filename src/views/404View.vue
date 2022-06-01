@@ -1,5 +1,5 @@
 <script setup>
-import NotFound from "@/components/404.vue";
+import NotFound from "@/components/404Component.vue";
 </script>
 
 <template>
