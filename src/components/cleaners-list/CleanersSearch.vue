@@ -16,7 +16,7 @@ import { db } from "/firebase/config";
             type="text"
             name="cityFilter"
             id="cityFilter"
-            placeholder="Introduce C.P o ciudad"
+            placeholder="Introduce ciudad"
           />
           <button class="btn search">Buscar</button>
         </form>
