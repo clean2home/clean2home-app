@@ -46,7 +46,7 @@ const miMetodo = () => {
 #maps iframe {
   height: 100%;
   width: 120%;
-  max-width: 1220px;
+  max-width: 1000px;
   border-radius: 8px;
   border-style: none;
   box-shadow: 3px 4px 9px 2px #0000001e;
@@ -55,7 +55,7 @@ const miMetodo = () => {
 
 @media (max-width: 1260px) {
   #maps {
-    width: 80vw;
+    width: 75vw;
   }
 }
 </style>

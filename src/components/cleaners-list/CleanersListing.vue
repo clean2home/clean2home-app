@@ -220,7 +220,7 @@ onMounted(() => {
 
 .container-cards {
   margin: 20px auto;
-  margin-bottom: 200px;
+  margin-bottom: 1em;
   padding: 10px;
   width: 70%;
   display: flex;
@@ -397,7 +397,7 @@ onMounted(() => {
     width: 92%;
     padding: 5px;
     margin: 0 auto;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
   }
 
   .cleaner-container {

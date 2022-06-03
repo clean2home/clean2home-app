@@ -78,7 +78,7 @@ const handleCheckoutButton = () => {
 
 .cleaner-profile {
   width: 90%;
-  margin: 5em auto;
+  margin: 2em auto;
   display: flex;
   flex-direction: column;
   align-items: center;
