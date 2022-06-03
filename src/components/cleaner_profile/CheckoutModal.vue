@@ -174,7 +174,7 @@ const handleSubmit = (e) => {
 .modal {
   width: 80vw;
   max-width: 900px;
-  height: 80vh;
+  height: fit-content;
   overflow: hidden;
   background-color: #fefefe;
   margin: auto;
@@ -253,6 +253,9 @@ const handleSubmit = (e) => {
 }
 
 @media (max-width: 760px) {
+  .modal {
+    padding: 3em 1em;
+  }
   .cleaner-illustration {
     display: none;
   }

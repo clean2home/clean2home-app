@@ -11,7 +11,7 @@ import { RouterLink } from "vue-router";
       Recibirás un correo electrónico con la información y además puedes ver la
       reserva en tu perfil. Si no lo recibes, revisa la carpeta de spam.
     </p>
-    <RouterLink to="/">
+    <RouterLink to="/client-profile">
       <span class="btn home-btn work-with-us-btn">Ir a mi perfil</span>
     </RouterLink>
   </div>

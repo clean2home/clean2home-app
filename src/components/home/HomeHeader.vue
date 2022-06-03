@@ -15,7 +15,7 @@ import HomeIllustration from "../../assets/home-illustration.svg";
           type="text"
           name="cityFilter"
           id="cityFilter"
-          placeholder="Introduce C.P. o ciudad"
+          placeholder="¿En qué ciudad estás?"
         />
         <button type="submit" class="btn home-btn">Buscar</button>
       </form>

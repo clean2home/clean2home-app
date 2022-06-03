@@ -1,7 +1,3 @@
-<script setup>
-import { getDocs, collection, query, where } from "firebase/firestore";
-import { db } from "/firebase/config";
-</script>
 <template>
   <main>
     <div class="detail-cleaners">
@@ -16,7 +12,7 @@ import { db } from "/firebase/config";
             type="text"
             name="cityFilter"
             id="cityFilter"
-            placeholder="Introduce C.P o ciudad"
+            placeholder="¿En qué ciudad estás?"
           />
           <button class="btn search">Buscar</button>
         </form>
@@ -25,7 +21,7 @@ import { db } from "/firebase/config";
   </main>
 </template>
 
-<style>
+<style lang="scss">
 .header-cleaners {
   margin: 0 auto;
   width: 70%;
@@ -47,7 +43,7 @@ import { db } from "/firebase/config";
   width: 70%;
   font-size: 4em;
   line-height: 1.4;
-  margin-top: 1em;
+  margin-top: 0.2em;
   padding: 20px;
   min-width: 750px;
 }

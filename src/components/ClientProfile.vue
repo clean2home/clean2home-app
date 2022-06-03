@@ -63,6 +63,10 @@ const handleSignOut = () => {
                   "es-ES"
                 )
               }}
+              -
+              {{ new Date(work.endDate.seconds * 1000).getHours() }}:{{
+                new Date(work.endDate.seconds * 1000).getMinutes()
+              }}
             </td>
             <td data-label="Dirección">{{ work.address.line1 }}</td>
             <td data-label="Cleaner">{{ work.cleanerName }}</td>
@@ -71,7 +75,10 @@ const handleSignOut = () => {
               {{ (work.endDate.seconds - work.startDate.seconds) / 3600 }}
             </td>
             <td
-              v-if="work.endDate.seconds < new Date().getTime()"
+              v-if="
+                new Date(work.endDate.seconds * 1000).getTime() >
+                new Date().getTime()
+              "
               data-label="Estado"
             >
               🟡 Pendiente
@@ -95,7 +102,7 @@ const handleSignOut = () => {
   align-items: flex-start;
   width: 80%;
   margin: 0 auto;
-  min-height: 50vh;
+  min-height: 70vh;
 }
 
 h1 {
